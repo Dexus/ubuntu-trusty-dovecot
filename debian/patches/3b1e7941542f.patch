@@ -1,0 +1,46 @@
+
+# HG changeset patch
+# User Timo Sirainen <tss@iki.fi>
+# Date 1444762649 -10800
+# Node ID 3b1e7941542f1f0c59c9768afe6a5ae3a6520e26
+# Parent  5e48c5a29ddd4fb1bfb12359cb149cfaf221bd0d
+lib-storage: Support latest cache fields in struct mailbox_metadata.precache_fields
+
+diff -r 5e48c5a29ddd -r 3b1e7941542f src/lib-storage/index/index-mail.c
+--- a/src/lib-storage/index/index-mail.c	Tue Oct 13 21:40:33 2015 +0300
++++ b/src/lib-storage/index/index-mail.c	Tue Oct 13 21:57:29 2015 +0300
+@@ -61,6 +61,9 @@
+ 	  .type = MAIL_CACHE_FIELD_VARIABLE_SIZE },
+ 	{ .name = "body.snippet",
+ 	  .type = MAIL_CACHE_FIELD_VARIABLE_SIZE }
++	/* FIXME: for now need to update get_metadata_precache_fields() in
++	   index-status.c when adding more fields. those fields should probably
++	   just be moved here to the same struct. */
+ };
+ 
+ static int index_mail_parse_body(struct index_mail *mail,
+diff -r 5e48c5a29ddd -r 3b1e7941542f src/lib-storage/index/index-status.c
+--- a/src/lib-storage/index/index-status.c	Tue Oct 13 21:40:33 2015 +0300
++++ b/src/lib-storage/index/index-status.c	Tue Oct 13 21:57:29 2015 +0300
+@@ -237,8 +237,10 @@
+ 		    strcmp(name, "imap.envelope") == 0)
+ 			cache |= MAIL_FETCH_STREAM_HEADER;
+ 		else if (strcmp(name, "mime.parts") == 0 ||
++			 strcmp(name, "binary.parts") == 0 ||
+ 			 strcmp(name, "imap.body") == 0 ||
+-			 strcmp(name, "imap.bodystructure") == 0)
++			 strcmp(name, "imap.bodystructure") == 0 ||
++			 strcmp(name, "body.snippet") == 0)
+ 			cache |= MAIL_FETCH_STREAM_BODY;
+ 		else if (strcmp(name, "date.received") == 0)
+ 			cache |= MAIL_FETCH_RECEIVED_DATE;
+@@ -250,6 +252,8 @@
+ 			cache |= MAIL_FETCH_PHYSICAL_SIZE;
+ 		else if (strcmp(name, "pop3.uidl") == 0)
+ 			cache |= MAIL_FETCH_UIDL_BACKEND;
++		else if (strcmp(name, "pop3.order") == 0)
++			cache |= MAIL_FETCH_POP3_ORDER;
+ 		else if (strcmp(name, "guid") == 0)
+ 			cache |= MAIL_FETCH_GUID;
+ 		else if (strcmp(name, "flags") == 0) {
+

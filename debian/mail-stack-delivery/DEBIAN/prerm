@@ -1,0 +1,32 @@
+#! /bin/sh
+
+set -e
+
+# conffile renamed in 1:1.2.9-1ubuntu8
+if dpkg --compare-versions "$2" lt-nl "1:1.2.9-1ubuntu8"; then
+    # "$1" is equal to "upgrade" (which means downgrading in this case) or "abort-upgrade"
+    # downgrading to <1:1.2.9-1ubuntu8 -- restore old conffile name
+        if [ -f "/etc/dovecot/conf.d/01-mail-stack-delivery.conf" ]; then
+          mv -f "/etc/dovecot/conf.d/01-mail-stack-delivery.conf" "/etc/dovecot/conf.d/01-dovecot-postfix.conf"
+        fi
+        if [ -f "/etc/dovecot/conf.d/01-mail-stack-delivery.auth" ]; then
+          mv -f "/etc/dovecot/conf.d/01-mail-stack-delivery.auth" "/etc/dovecot/conf.d/01-dovecot-postfix.auth"
+        fi
+        if [ -f "/usr/share/dovecot/mail-stack-delivery.conf" ]; then
+          mv -f "/usr/share/dovecot/mail-stack-delivery.conf"  "/usr/share/dovecot/dovecot-postfix.conf"
+        fi
+        if [ -f "/etc/dovecot/mail-stack-delivery.conf" ]; then
+          mv -f "/etc/dovecot/mail-stack-delivery.conf"  "/etc/dovecot/dovecot-postfix.conf"
+        fi
+        if [ -e "/var/backups/mail-stack-delivery/main.cf-backup" ]; then
+            if [ -n "//var/backups/dovecot-postfix/" ]; then
+                mkdir "/var/backups/dovecot-postfix/"
+            fi
+            mv -f "/var/backups/mail-stack-delivery/main.cf-backup" "/var/backups/dovecot-postfix/main.cf-backup"
+            test -d /var/backups/mail-stack-delivery/ && rmdir /var/backups/mail-stack-delivery/
+        fi
+fi
+
+
+
+exit 0

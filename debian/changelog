@@ -1,0 +1,2125 @@
+dovecot (1:2.2.19-0c~trusty) trusty; urgency=low
+
+  * 2.2.19 + fixes
+
+ -- Patrick Domack <patrickdk@patrickdk.com>  Tue, 20 Oct 2015 21:10:00 -0400
+
+dovecot (1:2.2.19-0a~trusty) trusty; urgency=low
+
+  * Backport 2.2.19
+  * pigeonhole 0.4.9
+
+ -- Patrick Domack <patrickdk@patrickdk.com>  Sun, 04 Oct 2015 20:40:00 -0400
+
+dovecot (1:2.2.18-0c~trusty) trusty; urgency=low
+
+  * Backport 2.2.18
+  * pigeonhole 0.4.8
+
+ -- Patrick Domack <patrickdk@patrickdk.com>  Sun, 24 May 2015 15:27:49 -0400
+
+dovecot (1:2.2.16-0f~trusty) trusty; urgency=low
+
+  * Backport 2.2.16
+  * pigeonhole 0.4.7
+
+ -- Patrick Domack <patrickdk@patrickdk.com>  Fri, 20 Mar 2015 14:31:49 -0400
+
+dovecot (1:2.2.13-2c~trusty) trusty; urgency=medium
+
+  * Add CLucene support
+  * multi-delim support
+  * upstart script
+  * patch for compression out of memory
+
+ -- Patrick Domack <patrickdk@patrickdk.com>  Mon, 14 Jul 2014 08:55:49 -0400
+
+dovecot (1:2.2.13-2) unstable; urgency=medium
+
+  * [bd5e34b] Patches from upstreams' hg repo to fix BYE and LOGOUT not being
+    sent. (Closes: #751682)
+  * [452e336] Czech translation for debconf.
+    Thanks to Michal Šimůnek (Closes: #751389)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 25 Jun 2014 01:38:59 -0400
+
+dovecot (1:2.2.13-1) unstable; urgency=medium
+
+  * [0680040] Imported Upstream version 2.2.13
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Sun, 25 May 2014 18:45:38 +0200
+
+dovecot (1:2.2.13~rc1-1) unstable; urgency=medium
+
+  * [7751508] Imported Upstream version 2.2.13~rc1
+    + Fixes denial of service vulnerability (CVE-2014-3430). Closes: #747549
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Sat, 10 May 2014 14:34:14 +0200
+
+dovecot (1:2.2.12-3) unstable; urgency=medium
+
+  * [0383db0] Break long line.
+  * [c961b6a] Fix installation of sieve plugins. Closes: #742770, #684271
+  * [388d2bf] Strip body.rfc5173.txt from the pigeonhole patch, as it is
+    non-free. Closes: #745398
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Wed, 23 Apr 2014 02:56:56 +0200
+
+dovecot (1:2.2.12-2) unstable; urgency=medium
+
+  * [c882a38] Add build dependencies libstemmer-dev and libexttextcat-dev,
+    used by dovecot-lucene.
+  * [67762d4] Use autotools-dev to update config.guess and config.sub.
+  * [33e79b7] Update Japenese po file. Thanks, victory. Closes: #730171
+  * [cbf213b] Add non-standard-dir-perm override for /etc/dovecot/private.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Sun, 23 Mar 2014 17:57:04 +0000
+
+dovecot (1:2.2.12-1) experimental; urgency=medium
+
+  * [52b67de] Update watch file for 2.2 series.
+  * [c4eac1f] Verify upstream tarball signature in watch file.
+  * [3a81ff9] Imported Upstream version 2.2.12
+  * [8950a86] Bump standards version to 3.9.5 (no changes).
+  * [cd82417] Add myself to uploaders.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Thu, 06 Mar 2014 22:45:19 +0000
+
+dovecot (1:2.2.10-1) unstable; urgency=low
+
+  * [0496c52] Imported Upstream version 2.2.10
+  * [515dd61] Added new package for Lucene full text search support.
+    Thanks to Jelmer Vernooij <jelmer@debian.org> for the patch.
+    (Closes: #685979)
+  * [718a68e] Fix old private key location in README.Debian.
+    Thanks to Jelmer Vernooij <jelmer@debian.org> for the patch.
+    (Closes: #702385)
+  * [42da568] dovecot-solr: Make sure solr-schema.xml gets installed.
+    (In /usr/share/dovecot)
+    (Closes: #695185)
+  * [77acbf7] Added /usr/share/dovecot/dovecot-abi file in dovecot-dev to
+    document -- you guessed it! -- the dovecot ABI version.
+  * [feb597a] Added support for xz compression.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu, 06 Mar 2014 02:51:34 -0500
+
+dovecot (1:2.2.9-1ubuntu1) trusty; urgency=medium
+
+  * Merge from Debian unstable, remaining changes:
+    + Add mail-stack-delivery package:
+      - Update d/rules
+      - d/control: convert existing dovecot-postfix package to a dummy
+        package and add new mail-stack-delivery package.
+      - Update maintainer scripts.
+      - Rename d/dovecot-postfix.* to debian/mail-stack-delivery.*
+      - d/mail-stack-delivery.preinst: Move previously installed backups and
+        config files to a new package namespace.
+      - d/mail-stack-delivery.prerm: Added to handle downgrades.
+    + Use Snakeoil SSL certificates by default:
+      - d/control: Depend on ssl-cert.
+      - d/dovecot-core.postinst: Relax grep for SSL_* a bit.
+    + Add autopkgtest to debian/tests/*.
+    + Add ufw integration:
+      - d/dovecot-core.ufw.profile: new ufw profile.
+      - d/rules: install profile in dovecot-core.
+      - d/control: dovecot-core - suggest ufw.
+    + d/dovecot-core.dirs: Added usr/share/doc/dovecot-core
+    + Add apport hook:
+      - d/rules, d/source_dovecot.py
+    + Add upstart job:
+      - d/rules, d/dovecot-core.dovecot.upstart, d/control,
+        d/dovecot-core.dirs, dovecot-imapd.{postrm, postinst, prerm},
+        d/dovecot-pop3d.{postinst, postrm, prerm}.
+        d/mail-stack-deliver.postinst: Convert init script to upstart.
+    + Use the autotools-dev dh addon to update config.guess/config.sub for
+      arm64.
+  * Dropped changes, included in Debian:
+    - Update Dovecot name to reflect distribution in login greeting.
+    - Update Drac plugin for >= 2.0.0 support.
+  * d/control: Drop dovecot-postfix package as its no longer required.
+
+ -- James Page <james.page@ubuntu.com>  Wed, 08 Jan 2014 09:35:49 +0000
+
+dovecot (1:2.2.9-1) unstable; urgency=low
+
+  [ Jaldhar H. Vyas ]
+  * [77468cf] Imported Upstream version 2.2.9
+  * [43e08f3] Place dovenull user in its own group. (Closes: #725164)
+  * [e1a3e9c] Handled the fact that dovecot-db.conf.ext is no longer used.
+    (Closes: #728107, #730403)
+
+  [Debconf translation updates]
+  * Russian (Yuri Kozlov).  (Closes: #729106)
+  * German (Chris Leick).  (Closes: #729358)
+  * Danish (Joe Hansen).  (Closes: #729425)
+  * French (Julien Patriarca).  (Closes: #729966)
+  * Portuguese (Américo Monteiro).  (Closes: #730006)
+  * Polish (Michał Kułach).  (Closes: #730061)
+  * Italian (Beatrice Torracca).  (Closes: #730136)
+  * Japanese (victory).  (Closes: #73017)
+  * Swedish (Martin Bagge / brother).  (Closes: #730188)
+  * Spanish; (Camaleón).  (Closes: #730354)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu, 16 Jan 2014 15:42:13 -0500
+
+dovecot (1:2.2.8-1) UNRELEASED; urgency=low
+
+  * [6157a2b] New upstream version 2.2.8
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu, 21 Nov 2013 16:54:46 -0500
+
+dovecot (1:2.2.5-1) experimental; urgency=low
+  [ Micah Anderson ]
+  * [a0035bf] New upstream version 2.2.5
+  * [a053c49] Update pigeonhole patch to 0.4.1
+  * [689cd67] refreshed patches
+
+  [ Jaldhar H. Vyas ]
+  * Caused bugs and then fixed them again.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 09 Sep 2013 00:57:32 -0400
+
+dovecot (1:2.1.17-2) unstable; urgency=low
+
+  * [e8286e0] New version of drac patch taken from Ubuntu which works better
+    with 2.x (Closes: #716764)
+  * [23acb40] Add a patch from Ubuntu to report the distro name in the login
+    banner why not.
+  * [f8d566e] Don't need dovecot-common package anymore; get rid of it.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sat, 07 Sep 2013 14:58:05 -0400
+
+dovecot (1:2.1.17-1) experimental; urgency=low
+
+  [ Jaldhar H. Vyas ]
+  * [fa0d6aa] Re-enable mbox write locking patch to comply with policy 11.6
+    (Closes: #720502)
+  * [38691fb] New upstream version (Closes: #719021)
+  * [1361144] prompts in dovecot-core postinst debconfiscated.
+  * IN MEMORIAM: Goldy the Goldfish (2000-2013)  You were a prince (or
+    perhaps princess?) among fish and we shall all miss you dearly.
+    May your karmas merit much punya in future lives.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 23 Aug 2013 01:46:20 -0400
+
+dovecot (1:2.1.16-1) experimental; urgency=low
+
+  * [9741bd8] New Upstream version
+  * [3476489] Updated pigeonhole patch to 0.3.5
+  * [d4f236f] Removed some patches which are no longer required.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 14 Jun 2013 16:25:19 -0400
+
+dovecot (1:2.1.7-8) experimental; urgency=low
+
+  * This version is not actually intended for upload.  It merely undoes
+    some changes made for the the wheezy release.  Namely, the following
+    features are back:
+    - TCP Wrappers support
+    - Hurd compatibility support
+    - Triggers.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu, 13 Jun 2013 16:14:21 -0400
+
+dovecot (1:2.1.7-7) unstable; urgency=high
+
+  * If you are upgrading from stable or earlier versions of this package
+    from testing/unstable please carefully read
+    /usr/share/doc/dovecot-core/README.Debian.gz for important information
+    about changes.
+  * [0d74b31] Move Breaks/Replaces mailavenger from dovecot-common to
+    dovecot-core (Closes: #694376)
+  * [a8030a1] Revamped dovecot-cores README.Debian by adding any info I could
+    think of in order to ease upgrade problems. (Closes: #696820)
+  * [04798d3] Don't touch 10-ssl.conf at all.  Eventually I will DTRT with
+    regards to the default generated ssl certificates but in the mean time
+    this will do the least mischief.  (Closes: #696817)
+  * [fde17d1] Patch to make /etc/dovecot/readme point to the right place for
+    the example configuration.  (Closes: #698941)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 04 Feb 2013 16:27:17 -0500
+
+dovecot (1:2.1.7-6) unstable; urgency=high
+
+  * WARNING: in order to get this package into wheezy some functionality
+    from the previous release had to be removed.  Namely:
+    - TCP Wrappers support
+    - Hurd compatability support
+    - Triggers  
+    All this will be coming back in the next version but for now, if you need
+    any of it, stick with -5.
+  * [1f869e0] NEWS.Debian was not getting added to the package (Closes: #693621)
+  * [564c5e2] Add breaks and replaces mailavenger for debian-common
+    (Closes: #694376)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 14 Dec 2012 17:01:33 -0500
+
+dovecot (1:2.1.7-5) unstable; urgency=high
+
+  * [132bc3b] Remove call to ntp-wait in init script.  Dovecot handles a 
+    skewed clock much better now.  (Closes: #693225)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 14 Nov 2012 14:45:29 -0500
+
+dovecot (1:2.1.7-4) unstable; urgency=high
+
+  * [68ef7ad] piuparts complained /etc/dovecot/private was left unowned on
+    purge which is against policy (Closes: #692944)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sun, 11 Nov 2012 23:45:07 -0500
+
+dovecot (1:2.1.7-3) unstable; urgency=high
+
+  [ Jaldhar H. Vyas ]
+  * [03d5499] Do not generate new dovecot cert if key or cert is already
+    present (Closes: #685896,#631257) Thanks to Alexander Ufimtsev
+    <alexu@ucd.ie> and Jörg-Volker Peetz <jvpeetz@web.de> for patches.
+  * [5be6c2a] You should be able to upgrade and remove dovecot-managesieved
+    without errors (Closes: #665487)
+  * [1a9ad5c] Fixes instances where UTF-8 was misused instead of mUTF-7
+    (Closes: #680035)
+  * [c0ac3ba] Backport of fix for failure to autocreate mailboxes
+    (Closes: #623440) This also requires setting the default mail_location.
+  * [ba1d3f5] Fix FTBS on Hurd (Closes: #686931) via upstream patch backported
+    from mercurial.
+  * [cfa92b5] Upgrade pigeonhole page to 0.3.1 (Closes: #688407)
+  * [58f01c2] Generated certificates will now be created in /etc/dovecot
+    (Closes: #608719)
+  * [8e40ea5] Patch to build with PIE and bindnow
+    by intrigeri@debian.org (Closes: #679017)
+  * [87d982b] Use libwrap (Closes: #685850)
+  * [ebb5421] Start after nslcd (Closes: #692632)
+  * [2db5c1a] Add support for dpkg triggers.  This means dovecot will not be
+    repeatedly restarted when installing or removing lots of plugins
+    (Closes: #601744)
+  * [bc66629] Patch to document -k in dsync.1
+    by Luca Capello <luca@pca.it> (Closes: #680992)
+  * [ba67766] Add lintian overrides.
+
+  [ Marco Nenciarini ]
+  * [ffba408] Updated watch file
+  * [9777434] Install missing default configuration files from upstream
+  * [9496828] Backport fix for segfault in managesieve triggered by
+    CHECKSCRIPT command. (Closes: #688197)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sat, 10 Nov 2012 03:50:30 -0500
+
+dovecot (1:2.1.7-2) unstable; urgency=low
+
+  * [e23a136] Just a quick upload to make dovecot buildable on non-linux
+    platforms again. (Closes: #676817) I did it by removing the systemd
+    build-dep altogether.  sd-daemon.[ch] is included in the source so if
+    systemd is installed on a system, it should be detected and socket
+    activation should happen.  That is, assuming I've got everything right
+    (and documented) which is something I'll be looking into for the next
+    version.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu, 21 Jun 2012 23:54:47 -0400
+
+dovecot (1:2.1.7-1) unstable; urgency=low
+
+  * [7668742] Imported upstream 2.1.7 (Closes: #663243)
+              + doveadm.1 documents the move command. (Closes: #641750)
+  * [4db927a] Patch to enable systemd support.  (Closes: #672266)
+              Thanks Riku Voipio.
+  * [e17ac86] Previous attempt at setting hardening flags did not include the
+              drac plugin.  Simon Ruderich provided an extra patch.
+              (Closes: #653530)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 30 May 2012 16:27:21 -0400
+
+dovecot (1:2.1.4-1) experimental; urgency=low
+
+  * [6cc1e7d] Imported upstream 2.1.4
+
+ -- Micah Anderson <micah@debian.org>  Tue, 10 Apr 2012 11:33:05 -0400
+
+dovecot (1:2.1.3-1) experimental; urgency=low
+
+  * [49ecc33] Imported upstream 2.1.3
+
+ -- Micah Anderson <micah@debian.org>  Fri, 16 Mar 2012 22:04:46 -0400
+
+dovecot (1:2.1.2-1) experimental; urgency=low
+
+  * [70c3f6e] Imported upstream 2.1.2
+  * Add missing dependency on dpkg-dev 1.16.1
+
+ -- Micah Anderson <micah@debian.org>  Thu, 15 Mar 2012 20:26:35 -0400
+
+dovecot (1:2.1.1-1) experimental; urgency=low
+
+  * [e113636] Imported upstream 2.1.1
+  * Updated pigeonhole patch to 0.3.0, supporting 2.1
+
+ -- Micah Anderson <micah@debian.org>  Tue, 13 Mar 2012 23:08:06 -0400
+
+dovecot (1:2.0.18-1) unstable; urgency=low
+
+  * [85ae320] Imported Upstream version 2.0.18
+  * [9cfd1da] Upped standards version to 3.9.3
+  * [afb4164] Patch to dovecot-core/postinst so that permissions of symlinked
+    certificates aren't modified. (Closes: #646508)
+    Thanks Michael Kuhn.
+  * [bf642ee] Patch to enable hardened build flags.  (Closes: #653530)
+    Thanks Moritz Muehlenhoff.
+  * [00b0d0c] Updated pigeonhole to 0.2.6
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 09 Mar 2012 00:55:13 -0500
+
+dovecot (1:2.0.15-1) unstable; urgency=low
+
+  * [a22575a] New upstream version 2.0.15: (Closes: #642045)
+      + doveadm altmove: Added -r parameter to move mails back to primary
+        storage.
+      - v2.0.14: Index reading could have eaten a lot of memory in some
+        situations
+      - doveadm index no longer affects future caching decisions
+      - mbox: Fixed crash during mail delivery when mailbox didn't yet have
+        GUID assigned to it.
+      - zlib+mbox: Fetching last message from compressed mailboxes crashed.
+      - lib-sql: Fixed load balancing and error
+  * [8ce5abc] Update pigeonhole to release 0.2.4
+  * [87658d2] Add dovecot-solr to dovecot-core's Suggests line.
+
+ -- Marco Nenciarini <mnencia@debian.org>  Mon, 19 Sep 2011 19:26:48 +0200
+
+dovecot (1:2.0.14-3) unstable; urgency=low
+
+  * [f37a9ec] Enable solr full text search plugin. (LP: #620959)
+  * [cdd8b84] Build dovecot-common as architecture-all package.
+  * [af90444] Fix mail_plugin_dir default value in conf.d/10-mail.conf
+    (Closes: #624294)
+  * [61347cb] Bump debhelper build-depends to (>= 7.2.3~) because we use
+    dh_bugfiles.
+  * [4b757b6] Fix wrong configuration files path in sieve manpages.
+
+ -- Marco Nenciarini <mnencia@debian.org>  Fri, 16 Sep 2011 02:26:21 +0200
+
+dovecot (1:2.0.14-2) unstable; urgency=low
+
+  [ Marco Nenciarini ]
+  * [a6896d6] Rename dovecot-common to dovecot-core. (Closes: #624835)
+  * [c36ca96] Manage protocols during package configuration and
+    deconfiguration phases.
+  * [599b55b] Update pigeonhole to release 0.2.3.
+  * [c654db0] Add a bug-script which will append doveconf -n output to bug
+    reports.
+  * [5270323] Add notes about upgrading from 1.2 to README.Debian.
+    (Closes: #635351)
+  * [5cd77a3] Add build-arch and build-indep target to debian/rules as
+    required by lintian.
+  * [be05d2a] Avoid ucf question when upgrading from squeeze and the only
+    difference in dovecot.conf is at the "protocols" line.
+  * [3c73782] Remove ucf backups during purge.
+  * [3ccf508] Make /etc/dovecot/*.ext readable by dovecot group members.
+    (Closes: #639005)
+  * [665bcc5] Use -c ${CONF} when calling doveconf to determine PIDBASE.
+    Thanks to Jonathan Hall (Closes: #627794)
+  * [325042c] Purge obsolete unmodified config files from /etc.
+    (Closes: #629397)
+  * [a9b9afb] Modified init script to report failures. (Closes: #629654)
+  * [d4622fd] Make dovecot-core suggesting all other packages containing
+    additional features.
+
+ -- Marco Nenciarini <mnencia@debian.org>  Thu, 15 Sep 2011 19:43:55 +0200
+
+dovecot (1:2.0.14-1) unstable; urgency=low
+
+  * [50a947e] New upstream version 2.0.14: (Closes: #640143)
+      + doveadm: Added support for running mail commands by proxying to
+        another doveadm server.
+      + Added "doveadm proxy list" and "doveadm proxy kick" commands to
+        list/kick proxy connections (via a new "ipc" service).
+      + Added "doveadm director move" to assign user from one server to
+        another, killing any existing connections.
+      + Added "doveadm director ring status" command.
+      + userdb extra fields can now return name+=value to append to an
+        existing name, e.g. "mail_plugins+= quota".
+      - script-login attempted an unnecessary config lookup, which usually
+        failed with "Permission denied".
+      - lmtp: Fixed parsing quoted strings with spaces as local-part for
+        MAIL FROM and RCPT TO.
+      - imap: FETCH BODY[HEADER.FIELDS (..)] may have crashed or not
+        returned all data sometimes.
+      - ldap: Fixed random assert-crashing with with sasl_bind=yes.
+      - Fixes to handling mail chroots
+      - Fixed renaming mailboxes under different parent with FS layout when
+        using separate ALT, INDEX or CONTROL paths.
+      - zlib: Fixed reading concatenated .gz files.
+  * [0297425] Use xz compression for dbg packages.
+  * [4464ccf] Support parallel builds in debian/rules
+  * [19667f0] Acknowledge NMU 1:2.0.13-1.1.
+    Thanks to Luk Claes
+
+ -- Marco Nenciarini <mnencia@debian.org>  Tue, 06 Sep 2011 23:18:46 +0200
+
+dovecot (1:2.0.13-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Don't ship .la files (Closes: #621297).
+
+ -- Luk Claes <luk@debian.org>  Sat, 18 Jun 2011 12:31:28 +0200
+
+dovecot (1:2.0.13-1) unstable; urgency=high
+
+  [ Marco Nenciarini ]
+  * [8af9e4d] New upstream version 2.0.13:
+      + Added "doveadm index" command to add unindexed messages into
+        index/cache. If full text search is enabled, it also adds unindexed
+        messages to the fts database.
+      + added "doveadm director dump" command.
+      + pop3: Added support for showing messages in "POP3 order", which can
+        be different from IMAP message order. This can be useful for
+        migrations from other servers. Implemented it for Maildir as 'O'
+        field in dovecot-uidlist.
+      - doveconf: Fixed a wrong "subsection has ssl=yes" warning.
+      - mdbox purge: Fixed wrong warning about corrupted extrefs.
+      - sdbox: INBOX GUID changed when INBOX was autocreated, leading to
+        trouble with dsync.
+      - script-login binary wasn't actually dropping privileges to the
+        user/group/chroot specified by its service settings.
+      - Fixed potential crashes and other problems when parsing header names
+        that contained NUL characters. (CVE-2011-1929)
+    (Closes: #627443)
+
+ -- Marco Nenciarini <mnencia@debian.org>  Sat, 21 May 2011 23:58:06 +0200
+
+dovecot (1:2.0.12-1) unstable; urgency=low
+
+  [ Jaldhar H. Vyas ]
+  * [66cbb94] New upstream major release.  Imported Upstream version 2.0.12
+  * [a48c7fd] Updated standards version
+
+  [ Marco Nenciarini ]
+  * [5c6b334] Updated watch file
+  * [0ba683e] Updated init script to new configuration scheme. (Closes: #593527)
+  * [8370be4] Fix upgrading from rename-it.nl packages
+  * [ae804e3] Update changelog
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 25 Apr 2011 17:03:26 -0400
+
+dovecot (1:2.0.11-1) experimental; urgency=low
+
+  * [a4764a4] New upstream major release (Closes: #573889, #580929,
+    #597476, #603951, #606089, #606646, #606649, #608075, #612369, #610919)
+  * [461f667] Updated copyright and package descriptions. Thanks Stephan
+    Bosch.
+  * [7fbd92a] Drop all patches but drac support. Update pigeonhole to
+    release 0.2.1
+  * [05a5a1e] Update debian/rules to work with dovecot 2.0. Thanks
+    Stephan Bosch.
+  * [a36193e] Update debian/dovecot-common.{postinst,postrm} to handle
+    the new config file layout. Thanks Stephan Bosch.
+  * [3589afd] Remove debian/dovecot.1 manpage because is provided by
+    upstream.
+  * [f1703e1] Remove debian/dovecotpw.1 manpage as there is no dovecotpw
+    executable in dovecot 2.0. Same feature is provided through 'doveadm
+    pw' command.
+  * [e30283d] Remove expire-tool.sh wrapper as there is no expire-tool
+    in dovecot 2.0. Same feature is provided through 'doveadm expunge'
+    command.
+  * [3385061] Remove daily cron script and the related configuration
+    from the default file.
+  * [bec19a0] Update debian/dovecot-common.NEWS.Debian with upgrading
+    instructions
+  * [1e56f1c] Call dh_makeshlibs with --no-script option to avoid
+    {postinst,postrm}-has-useless-call-to-ldconfig lintian errors.
+  * [325f055] Disable numbers in patches (requires git-buildpackage >=0.5.13)
+  * [74d6ebe] Added debian/source/local-options with "unapply-patches".
+  * [0edef17] Set default protocols value as empty and enable each
+    protocol in its own configuration file in
+    /usr/share/dovecot/protocols.d (LP: #661453)
+  * [e88860c] Removed code about upgrading from pre-etch packages.
+  * [95c5d47] Removed obsolete Build-Conflict (Closes: #614053)
+  * [41dddf4] Move configurations for imapd and pop3d to the appropriate
+    packages. (Closes: #606648)
+  * [b8b66dc] Removed obsolete README.Debian and NEWS.Debian from
+    dovecot-pop3d and dovecot-imapd packages
+  * [0bda8ac] Added packages dovecot-lmtpd and dovecot-managesieved.
+  * [9a954f1] Build databases, ldap and gssapi support as plugins
+  * [1a3f323] Deregister obsolete configuration files from ucf in
+    dovecot-common postinst on upgrades.
+  * [fae4b76] Added packages dovecot-pgsql, dovecot-mysql, dovecot-sqlite,
+    dovecot-ldap, dovecot-gssapi and dovecot-sieve (Closes: #251433)
+  * [aa8983d] Imported Upstream version 2.0.11
+
+ -- Marco Nenciarini <mnencia@debian.org>  Mon, 07 Mar 2011 18:23:59 +0100
+
+dovecot (1:1.2.15-3) unstable; urgency=low
+
+  * [096c373] Fix file overwrite error when upgrading from lenny
+    (Closes: #601980)
+  * [37b3220] Add --no-create-home to adduser invocation in dovecot-
+    common.postinst script (Closes: #601767)
+  * [b00b527] Fall back to `hostname` if `hostname -f` invocation fails
+    (Closes: #562780)
+  * [9102fec] Make self-generated certificates key length 2048 bits.
+
+ -- Marco Nenciarini <mnencia@debian.org>  Tue, 02 Nov 2010 11:12:53 +0100
+
+dovecot (1:1.2.15-2) unstable; urgency=low
+
+  * [a0744a5] Switch vcs fields to git
+  * [d8a1bd4] Add debian/gbp.conf to make easy the usage of git-
+    buildpackage
+  * [c0dc21f] Warn that the generated SSL certificate will expire in 10
+    years instead of 365 days, as it's the lifetime of of self-generated
+    certificates since 1:1.2.13-1
+  * [6472d63] Switch to gbp-pq patch management.
+  * [bf2fc17] Upgraded sieve plugin to version 0.1.18
+  * [6b9809d] Upgraded managesieve plugin to version 0.11.12
+  * [d67cd17] Upgraded dovecot-managesieve.patch to version 0.11.12
+
+ -- Marco Nenciarini <mnencia@debian.org>  Thu, 28 Oct 2010 22:50:19 +0200
+
+dovecot (1:1.2.15-1) unstable; urgency=high
+
+  [ Marco Nenciarini ]
+  * New upstream release (Closes: #587036,#597529)
+  * Updated policy version to 3.9.1.0 (no changes needed)
+
+  [ Jaldhar H. Vyas ]
+  * [SECURITY] Fixes two bugs with acls which could have allowed a user to
+    gain improper access or admin rights to shared mailboxes.
+    (Closes: #599521)
+  * Warn that the generated SSL certificate will expire in 365 days.  Thanks
+    Phillip Weis.  (Closes: #576455)
+  * Wherever the path to sendmail is given as /usr/lib/sendmail, change to
+    /usr/sbin/sendmail.  (Closes: #570814,#595671)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 08 Oct 2010 17:34:19 -0400
+
+dovecot (1:1.2.13-1) unstable; urgency=low
+
+  [ Jaldhar H. Vyas ]
+  * dovecot-common: Upped expiration date of self-generated certificates to
+    10 years from 1 year.  (Closes: #587371)
+
+  [ Marco Nenciarini ]
+  * New upstream release:
+    - Fixed iconv() crash when it was processing several kilobytes of
+      broken continuous input. This mainly could have caused a problem
+      with IMAP SEARCH. Possibly also with some Sieve checks.
+    - If MIME encoded-words contained line feeds, Dovecot logged
+      cache corruption errors.
+    - mbox: Renaming mailbox under newly created dir didn't move index
+      directory.
+    - mbox: When generating envelope to From_-line, don't append a second
+      @owndomain if username already has one.
+  * Updated policy version to 3.9.0.0 (no changes needed)
+
+ -- Marco Nenciarini <mnencia@debian.org>  Mon, 26 Jul 2010 17:03:38 +0200
+
+dovecot (1:1.2.12-1) unstable; urgency=low
+
+  * New upstream release
+  * Upgraded sieve plugin to version 0.1.17
+  * Refreshed dovecot-managesieve.patch
+  * debian/patches/sieve-fix-imapflags.patch: Removed. Fixed upstream.
+
+ -- Marco Nenciarini <mnencia@debian.org>  Sat, 26 Jun 2010 18:14:15 +0200
+
+dovecot (1:1.2.11-1) unstable; urgency=high
+
+  * New upstream release
+  * urgency set to high, because under particular circumstances you could
+    cause a DoS by sending a message with a huge header.
+  * sieve: Fix addflags command in deprecated imapflags extension
+    (Closes: #570058)
+  * Include a daily expire script with a setting in /etc/default/dovecot
+    to enable it. The new script is disabled by default as it requires
+    some configurations by the system administrator. Thanks to Hans Spaans
+  * Mark expire-tool.sh as a bash script
+  * Bump Standards-Version to 3.8.4, no changes needed
+
+ -- Marco Nenciarini <mnencia@debian.org>  Mon, 08 Mar 2010 22:25:46 +0100
+
+dovecot (1:1.2.10-1) unstable; urgency=low
+
+  * New upstream release (Closes: #566796)
+  * Upgraded sieve plugin to version 0.1.15
+  * Upgraded managesieve plugin to version 0.11.11
+  * Upgraded dovecot-managesieve.patch to version 0.11.11
+
+ -- Marco Nenciarini <mnencia@debian.org>  Mon, 25 Jan 2010 17:21:09 +0100
+
+dovecot (1:1.2.9-2) unstable; urgency=low
+
+  * Upgraded sieve plugin to version 0.1.14
+  * Upgraded managesieve plugin to version 0.11.10
+  * Upgraded dovecot-managesieve.patch to version 0.11.10
+  * debian/patches/dovecot-example.patch: Refreshed.
+  * Added expire-tool wrapper script (Closes: #565538)
+  * Added ${misc:Depends} to the dependencies of each binary package,
+    to make lintian happy (debhelper-but-no-misc-depends)
+
+ -- Marco Nenciarini <mnencia@debian.org>  Sun, 17 Jan 2010 09:39:42 +0100
+
+dovecot (1:1.2.9-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/patches/gold-fix.patch: Removed. Fixed upstream.
+
+ -- Marco Nenciarini <mnencia@debian.org>  Thu, 17 Dec 2009 10:52:53 +0100
+
+dovecot (1:1.2.8-2) unstable; urgency=low
+
+  * Moved libexec to lib corrections in dovecot-managesieve.patch and
+    dovecot-managesieve-dist.patch to dovecot-example.patch
+  * debian/patches/dovecot-mboxlocking.patch: Regenerated to avoid FTBFS
+    when quilt isn't installed.
+  * debian/patches/quota-mountpoint.patch: Removed. Not needed anymore.
+  * debian/patches/dovecot-quota.patch: Removed. Quotas aren't properly
+    enabled unless mail_plugins = quota imap_quota.
+  * debian/patches/gold-fix.patch: Fixed configure script to build even
+    with binutils-gold or --no-add-needed linker flag (Closes: #554306)
+  * debian/dovecot-common.init: fixed LSB headers. Thanks to Pascal Volk.
+    (Closes: #558040)
+  * debian/changelog: added CVE references to previous changelog entry.
+  * debian/rules: checked up the build system. It's not fragile anymore.
+    (Closes: 493803)
+  * debian/dovecot-common.postinst: Now invoking dpkg-reconfigure
+    on dovecot-common is enough to generate new certificates
+    if the previous ones were removed. (Closes: #545582)
+  * debian/rules: No longer install convert-tool in /usr/bin.
+    It isn't an user utility and it should stay in /usr/lib/dovecot
+    like all other similar tool.
+
+ -- Marco Nenciarini <mnencia@debian.org>  Tue, 08 Dec 2009 12:24:04 +0100
+
+dovecot (1:1.2.8-1) unstable; urgency=high
+
+  [ Marco Nenciarini ]
+  * New upstream release. (Closes: #557601)
+  * [SECURITY] Fixes local information disclosure and denial of service.
+    (see: http://www.dovecot.org/list/dovecot-news/2009-November/000143.html
+    and CVE-2009-3897)
+  * Added myself to uploaders.
+  * Switched to the new source format "3.0 (quilt)":
+    - removed dpatch from build-depends
+    - removed debian/README.source because now we use only standard
+      dpkg features
+    - regenerated all patches
+  * Prepared to switch to multi-origin source:
+    - recreated dovecot-libsieve.patch and dovecot-managesieve-dist.patch
+      starting from the upstream tarball
+    - removed all autotools related build-depends and build-conflict
+    - renamed dovecot-libsieve and dovecot-managesieve directories
+      to libsieve and managesieve.
+  * debian/rules: Moved the configuration of libsieve and managesieve from
+    the build phase to the configuration phase
+
+  [ Jaldhar H. Vyas ]
+  * Added dovecot-dbg package  with debugging symbols.  Thanks Stephan Bosch.
+    (Closes: #554710)
+  * Fixed some stray libexec'isms in the default configuration.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 23 Nov 2009 17:04:14 -0500
+
+dovecot (1:1.2.7-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/dovecot-common.init:
+    - use $CONF when starting the daemon. (Closes: #549944)
+    - always output start/stop messages. (Closes: #523810)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sat, 14 Nov 2009 11:28:33 +0100
+
+dovecot (1:1.2.6-1) unstable; urgency=low
+
+  * New upstream relese.
+  * debian/patches/v1.2.5-exec-mail_fix.dpatch: removed, merged upstream.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 12 Oct 2009 06:56:55 +0000
+
+dovecot (1:1.2.5-2) unstable; urgency=low
+
+  * debian/dpatches/v1.2.5-exec-mail_fix.dpatch: added.
+    (Closes: #546694, #546695)
+  * debian/dovecot-common.dirs: removed /etc, /etc/ssl/{private,certs}, they
+    are handled by openssl; this should fix the piuparts test.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 27 Sep 2009 20:53:52 +0200
+
+dovecot (1:1.2.5-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 14 Sep 2009 14:34:06 +0200
+
+dovecot (1:1.2.4-2) unstable; urgency=low
+
+  * debian/patches/dovecot-libsieve.dpatch: updated to 0.1.12.
+    (Closes: #539527)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 02 Sep 2009 07:28:23 +0200
+
+dovecot (1:1.2.4-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #537186, #540058)
+  * Bumped Standards-Version to 3.8.3, no changes needed.
+  * debian/control: only suggests ntp. (Closes: #542152)
+  * debian/patches/dovecot-managesieve-dist.dpatch: updated to the 0.11.9
+    release. (Closes: #539527)
+  * debian/rules: dovecot should be started with sequence number 20.
+    (Closes: #543473)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sat, 29 Aug 2009 17:27:59 +0200
+
+dovecot (1:1.2.2-2) unstable; urgency=high
+
+  * Er that should be fcntl not fnctl.  (Closes: #539474, #539486)
+  * For the sake of completeness, fixed some errors in the example config file.
+    (They are in the !include statements which are commented out by default 
+    so it is unlikely that most users will actually be affected.)
+    (Closes: #539391)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sat, 01 Aug 2009 11:38:03 -0400
+
+dovecot (1:1.2.2-1) unstable; urgency=low
+
+  [Joel Johnson]
+  * New upstream version, updated ManageSieve patch
+     - fixes index corruption condition (Closes: #537388)
+  * Set default for mbox_write_locks to "fnctl dotlock" according to
+    Debian Policy (Closes: #537326)
+  * Set MySQL build dependency to use version-agnostic -dev package
+  * Drop postgres-configure patch, functionality included upstream
+  * Updated dovecot-libsieve to version 0.1.9
+     - fixes subaddress matching (Closes: #537386)
+     - check additional address-list headers (Closes: #537379)
+
+  [Jaldhar H. Vyas]
+  * Remove unneeded build-dependencies on byacc and flex now that we no longer
+    use cmusieve.
+
+ -- Joel Johnson <mrjoel@lixil.net>  Tue, 28 Jul 2009 20:35:57 -0600
+
+dovecot (1:1.2.1-2) unstable; urgency=low
+
+  * Update to use default automake (Closes: #536880) now that current upstream
+    successfully builds with 1.10 (was previously a problem in bug 473754.
+  * Updated Standards-Verson to 3.8.2 (no action required)
+  * Remove ./var/run directories to fix lintian warnings.
+  * Updated dovecot-libsieve patch to version 0.1.8, removed autogen.sh,
+    tests, and doc/rfc
+  * Updated dovecot-managesieve patch to version 0.11.7
+  * Updated dovecot-managesieve-dist patch to Mercurial revision 12b9733ee8b0
+      (0.11.7+), removed lib-cmusieve, doc/rfs, autogen.sh
+  * Add additional upgrading note to README.Debian to clarify the ManageSieve
+    configuration changes needed - existing configurations break if not
+    updated! (Closes: #537158)
+  * Include the ChangeLog and README for sieve and ManageSieve
+
+ -- Joel Johnson <mrjoel@lixil.net>  Wed, 15 Jul 2009 20:29:33 -0600
+
+dovecot (1:1.2.1-1) unstable; urgency=low
+
+  [ Joel Johnson ]
+  * New upstream release
+  * Update packaging for 1.2 release
+    - update SIEVE patch to use Dovecot rewrite (version 0.1.7,
+        removed RFCs and tests for a DFSG patch)
+    - update ManageSieve patch and software to hg revision 2c9b4b4ab6a8
+        (0.11.6+) for 1.2.1 support
+        + removed lib-cmusieve since building against newer sieve
+        + removed doc/rfc for DFSG compliance
+        + removed autogen.sh since we run autotools during the build
+    - updated other misc patches
+
+ -- Joel Johnson <mrjoel@lixil.net>  Sun, 12 Jul 2009 11:15:01 -0600
+
+dovecot (1:1.1.16-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #531599)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Thu, 04 Jun 2009 12:38:59 +0200
+
+dovecot (1:1.1.15-1) unstable; urgency=low
+
+  * New upstream release; sorry, no time to include extra upstream patches
+    which are not released, feel free to submit them as dpatch files and I will
+    add them to the package. (Closes: #529923)
+  * debian/control: updated Standards-Version, no changes needed.
+  * debian/dovecot-common.init: patched to support ENABLED=0 in
+    /etc/default/dovecot, useful if dovecot is used as local-only IMAP server
+    through PREAUTH interface. (Closes: #524302)
+  * debian/dovecot-common.README.Debian: simplyfied, we only point the user to
+    wiki.dovecot.org; added a note about how to regenerate the SSL certificate.
+    (Closes: #528934)
+  * debian/dovecot-common.postrm: do not break if /etc/ssl/certs does not
+    exist. (Closes: #524865)
+  * debian/patches/dovecot-managesieve-dist: updated to 0.10.6.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 31 May 2009 20:13:26 +0200
+
+dovecot (1:1.1.13-2) unstable; urgency=high
+
+  * New upload, urgency set to high: the package in testing is broken.
+  * debian/dovecot-common.init: fixed a typo.
+  * debian/patches/dovecot-example.dpatch: fixed a few paths.
+    (Closes: #521544)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 29 Mar 2009 21:16:02 +0200
+
+dovecot (1:1.1.13-1) unstable; urgency=low
+
+  * New upstream release.
+  * This version fixes problems accessing mailboxes in some setups.
+    (Closes: #520310)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Thu, 19 Mar 2009 17:31:56 +0100
+
+dovecot (1:1.1.12-1) unstable; urgency=low
+
+  * New upstream release, it fixes some wrong defaults in the configuration
+    file. (Closes: #518631)
+  * debian/rules: add support for libdb. (Closes: #518630)
+  * debian/dovecot-common.postinst: create the dovecot certificate only at
+    install time. (Closes: #518738, #518598)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 16 Mar 2009 14:26:32 +0100
+
+dovecot (1:1.1.11-4) unstable; urgency=low
+
+  * debian/dovecot-common.init: fixed a typo from the last upload.
+    (Closes: #518504)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Fri, 06 Mar 2009 18:39:09 +0100
+
+dovecot (1:1.1.11-3) unstable; urgency=low
+
+  * debian/dovecot-common.init: applied patch from Håkon Stordahl to call
+    ntp-wait if available. (Closes: #517808)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 04 Mar 2009 17:38:59 +0100
+
+dovecot (1:1.1.11-2) unstable; urgency=low
+
+  * debian/dovecot-common.init: fixed a bug in the init script, adding a
+    missing slash in the PIDFILE path. (Closes: #516845)
+  * debian/dovecot-common.init: fixed a bug in the init script, sending the HUP
+    signal for reloading the configuration. (Closes: #512197)
+  * debian/dovecot-common.init: check if /etc/inetd.conf exists.
+    (Closes: #509259, #497148)
+  * debian/control: dovecot-common suggests ntp and ntpdate. (Closes: #511060)
+  * debian/dovecot-common.postinst: migration hook for default_mail_env =>
+    mail_location. (Closes: #517073)
+  * debian/dovecot.1: fixed the path of the configuration file.
+    (Closes: #501493)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Fri, 27 Feb 2009 17:24:09 +0100
+
+dovecot (1:1.1.11-1) unstable; urgency=low
+
+  * New upstream release, upload to unstable. (Closes: #507122)
+  * debian/patches/dovecot-quota.dpatch: fixed a bug in the imap quota plugin.
+    (Closes: #484677)
+  * debian/dovecot-common.init: added the status action, thanks Fladischer
+    Michael for the patch. (Closes: #509694)
+  * debian/dovecotpw.1: added manpage for dovecotpw, thanks Xavier Luthi for
+    the patch. (Closes: #504712)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Fri, 20 Feb 2009 20:39:38 +0100
+
+dovecot (1:1.1.9-1) experimental; urgency=low
+
+  [ Fabio Tranchitella ]
+  * debian/control: dovecot-common suggests ntp.
+
+  [ Joel Johnson ]
+  * New upstream release
+  * updated managesieve patch to apply against new version
+
+ -- Joel Johnson <mrjoel@lixil.net>  Sat, 24 Jan 2009 04:12:42 +0000
+
+dovecot (1:1.1.8-1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/control: added LDA to the description of dovecot-common.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 07 Jan 2009 23:14:29 +0100
+
+dovecot (1:1.1.7-1) experimental; urgency=low
+
+  * New upstream release
+  * Updated dovecot-ssh.patch for new release
+  * Updated MANAGESIEVE to 0.10.4
+  * Fix package to support double compilation
+    - Properly clean dovecot-managesieve as pointed out by Stephan Bosch
+    - Add --copy directive to automake invocation
+
+ -- Joel Johnson <mrjoel@lixil.net>  Thu, 04 Dec 2008 20:52:11 -0700
+
+dovecot (1:1.1.2-3) experimental; urgency=low
+
+  * debian/control: added libbz2-dev to the Build-Depends to enable the bzip2
+    support. (Closes: #495129)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Thu, 14 Aug 2008 20:45:41 +0200
+
+dovecot (1:1.1.2-2) experimental; urgency=low
+
+  * Merged changes in the unstable package.
+  * debian/control: added replaces for the imap and pop modules from the
+    -common to the the -imap and -pop packages. (Closes: #493798)
+  * debian/rules: applied some of the suggestions from Matthias Kloses,
+    thanks! (Refs: #493803)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Tue, 05 Aug 2008 21:20:33 +0200
+
+dovecot (1:1.1.2-1) experimental; urgency=low
+
+  * New upstream release
+  * Trivial update to autocreate patch
+
+ -- Joel Johnson <mrjoel@lixil.net>  Sat, 26 Jul 2008 08:18:39 -0600
+
+dovecot (1:1.1.1-1) experimental; urgency=low
+
+  [ Joel Johnson ]
+  * New upstream release (Closes: #487989)
+  * Updated policy version to 3.8.0.1 (no changes needed)
+  * Updated watch file to watch new release directory
+  * Actually install dovecot.8 since we have it
+  * Removed quota_v2 patch (was unreachable code): upstream now defaults
+    to quota v1 if _LINUX_QUOTA_VERSION is not defined
+  * Removed pam-error-information patch: included upstream
+  * Removed mbox_snarf patch: included upstream
+  * Removed full MANAGESIEVE patch (replaced with new 1.1 approach)
+  * Merged protocols_none_by_default patch into dovecot-example patch
+  * Updated drac patch to build against 1.1
+  * Updated autocreate patch with 1.1 version
+  * Updated dovecot-sieve to 1.1.5
+  * Added dovecot-managesieve patch against dovecot tree
+  * Added dovecot-managesieve source for building module
+
+  [ Fabio Tranchitella ]
+  * Added Joel Johnson to the uploaders; thanks for your work!
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 20 Jul 2008 19:09:23 +0200
+
+dovecot (1:1.0.15-2) unstable; urgency=low
+
+  * debian/dovecot.1: added "This includes doing a syntax check" to the -a
+    option.
+  * debian/rules: now the package builds two times in a row without problems.
+    (Closes: #490201)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 27 Jul 2008 19:56:18 +0200
+
+dovecot (1:1.0.15-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/rules: clean the package before unpatching. (Closes: #490201)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 22 Jun 2008 09:06:01 +0200
+
+dovecot (1:1.0.14-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/patches/inbox_creation.dpatch: removed, merged upstream.
+  * debian/patches/allow_nets.dpatch: removed, merged upstream.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Tue, 03 Jun 2008 10:07:13 +0200
+
+dovecot (1:1.0.13-6) unstable; urgency=low
+
+  * debian/patches/inbox_creation.dpatch: added, use mail_privileged_group's
+    group when creating inboxes if the unprivileged user fails; upstream:
+    http://hg.dovecot.org/dovecot-1.0/rev/932768a879c6 (Closes: #471716)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 28 May 2008 12:58:17 +0200
+
+dovecot (1:1.0.13-5) unstable; urgency=low
+
+  * debian/patches/allow_nets.dpatch: added, allow_nets didn't work correctly
+    with big endian machines; patch from upstream, thanks Timo:
+    http://hg.dovecot.org/dovecot-1.0/rev/71c02fdf1b59
+
+ -- Fabio Tranchitella <kobold@debian.org>  Thu, 15 May 2008 14:48:14 +0200
+
+dovecot (1:1.0.13-4) unstable; urgency=low
+
+  * debian/patches/dovecot-MANAGESIEVE-9.3.dpatch: updated managesieve to
+    version 9.3.
+  * debian/dovecot-common.README.Debian: added a note about how to configure
+    dovecot to log to file instead of using syslog.
+  * debian/dovecot.1: added a SIGNALS section. (Closes: #479059)
+  * dovecot-sieve: updated to the last hg release (5c3ba11994cb).
+    (Closes: #479104)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 05 May 2008 17:28:21 +0200
+
+dovecot (1:1.0.13-3) unstable; urgency=low
+
+  * debian/rules: do not install anymore the ldap and sql example
+    configuration files under /etc. (Closes: #472674)
+  * debian/dovecot-common.postinst: really chmod
+    /etc/dovecot/dovecot-{ldap,sql}.conf files to 0600.
+  * debian/devecot-common.init: do not start the service if dovecot.conf
+    doesn't exist. (Closes: #475888)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 27 Apr 2008 22:42:37 +0200
+
+dovecot (1:1.0.13-2) unstable; urgency=low
+
+  * debian/rules: use aclocal-1.9 instead of aclocal. (Closes: #473754)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Tue, 01 Apr 2008 15:30:32 +0200
+
+dovecot (1:1.0.13-1) unstable; urgency=high
+
+  * New upstream release, fixes a security issue:
+    http://www.dovecot.org/list/dovecot-news/2008-March/000064.html
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 09 Mar 2008 19:22:20 +0100
+
+dovecot (1:1.0.12-1) unstable; urgency=high
+
+  * New upstream release. (Closes: #469457)
+  * debian/patches/dovecot-MANAGESIEVE-9.2.dpatch: updated, thanks to Marco
+    Nenciarini for the patch.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Thu, 06 Mar 2008 15:53:07 +0100
+
+dovecot (1:1.0.10-4) unstable; urgency=low
+
+  * debian/patches/autocreate.dpatch: added, thanks to Walter Reiner.
+  * debian/rules: use --with-ioloop=best instead of --with-ioloop=epoll, as
+    suggested by Timo. (Closes: #466296)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 18 Feb 2008 09:29:39 +0100
+
+dovecot (1:1.0.10-3) unstable; urgency=low
+
+  * debian/patches/dovecot-MANAGESIEVE-9.1.dpatch: added, thanks to Aleksey
+    Midenkov for providing a patch. (Closes: #416166)
+  * debian/dovecot-common.init: added $time to Should-Start. (Closes: #461543)
+  * debian/dovecot-common.postinst: do not add the dovecot user to the mail
+    group, it is not required by upstream. (Closes: #457123)
+  * debian/control: updated Standards-Version to 3.7.3, no changes required.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 10 Feb 2008 18:37:55 +0100
+
+dovecot (1:1.0.10-2) unstable; urgency=low
+
+  * debian/patches/mbox_snarf.dpatch: added, thanks to Bernd Kuhls.
+    (Closes: #462319)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Thu, 24 Jan 2008 10:12:02 +0100
+
+dovecot (1:1.0.10-1) unstable; urgency=high
+
+  * New upstream release, fixes a security bug.
+  * debian/patches/exec_check_for_none.dpatch: updated.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 30 Dec 2007 10:29:26 +0100
+
+dovecot (1:1.0.9-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control: added the Vcs-Svn and Vcs-Browser fields.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 12 Dec 2007 08:10:11 +0100
+
+dovecot (1:1.0.8-2) unstable; urgency=low
+
+  * Provides a dovecot-dev package, thanks to Josh Triplett for providing a
+    patch. (Closes: #444812)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Tue, 04 Dec 2007 09:22:59 +0100
+
+dovecot (1:1.0.8-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/patches/unsupported-sasl-mech.dpatch: merged with upstream.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Thu, 29 Nov 2007 13:36:39 +0100
+
+dovecot (1:1.0.7-3) unstable; urgency=low
+
+  * debian/patches/dovecot-ssl.dpatch: provide mechanism to discover if ssl
+    client certificate is verified, patch from Stephen Gran. (Closes: #446555)
+  * debian/patches/pam-error-information.dpatch: fill auth information in pam
+    error, patch backported from upstream RCS. (Closes: #439246)
+  * debian/patches/unsupported-sasl-mech.dpatch: should use NO (not BAD) for
+    unsupported SASL mech, patch backported from upstream RCS. (Closes: #449324)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 14 Nov 2007 21:33:55 +0100
+
+dovecot (1:1.0.7-2) unstable; urgency=low
+
+  * debian/dovecot-common.postinst:
+    + don't fail if dovecot-ldap.conf or dovecot-sql.conf are removed; thanks
+      to Mathias Gug. (Closes: #448401)
+    + fix permissions of /var/run/dovecot and /var/run/dovecot/login.
+      (Closes: #446051)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 04 Nov 2007 10:06:06 +0100
+
+dovecot (1:1.0.7-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/rules: remove drac.so in the clean target. (Closes: #442548)
+  * debian/dovecot-common.init: implemented the reload action.
+    (Closes: #441032)
+  * Update protocoles option in configuration when installing/removing
+    -imapd/-pop3d packages. Thanks to Soren Hansen and Mathias Gug from
+    Ubuntu for providing a patch. (Closes: #447201)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Fri, 02 Nov 2007 23:06:17 +0100
+
+dovecot (1:1.0.5-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 10 Sep 2007 09:25:59 +0200
+
+dovecot (1:1.0.3-3) unstable; urgency=low
+
+  * debian/dovecot-common.init: don't use the init script name to locate the
+    configuration file because it is not reliable. If you really want to start
+    multiple servers, just copy the init script and use the optional default
+    file to override the variables. (Closes: #437228)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Thu, 16 Aug 2007 09:17:01 +0200
+
+dovecot (1:1.0.3-2) unstable; urgency=low
+
+  * debian/rules: removed the --with-notify=inotify switch, it should be
+    detected automatically.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Thu, 09 Aug 2007 09:39:50 +0200
+
+dovecot (1:1.0.3-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #434038, #432601)
+  * This release doesn't build dbox support out-of-the-box. (Closes: #431615)
+  * dovecot-sieve: updated to the last hg's tip. (Closes: #434079)
+  * debian/dovecot-*.README.Debian: don't call /etc/init.d scripts directly.
+    (Closes: #431991)
+  * debian/dovecot-common.init: updated with patches from Tom Metro, thanks!
+    (Closes: #426480, #422674)
+  * debian/dovecot-common.postinst: fixed a missing variable DOMAINNAME.
+    (Closes: #425917)
+  * debian/rules: moved the init script to the level 24, after the ntpdate
+    one. (Closes: #432723)
+  * debian/patches/00list: added dovecot-drac, again. (Closes: #353039)
+  * debian/rules: build with inotify and epoll support. (Closes: #419281)
+  * debian/dovecot.1: added a simple manpage for dovecot. (Closes: #426702)
+  * debian/copyright: added copyright exceptions as suggested by Timo.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sat, 04 Aug 2007 20:11:36 +0200
+
+dovecot (1:1.0.0-1) unstable; urgency=low
+
+  * New upstream release, the final 1.0.0. Bumped epoch, because we used the
+    wrong version scheming in the past and I think it is worth to do so now
+    that 1.0.0 has been released.
+  * debian/watch: updated.
+  * Rebuilt with a new glibc in unstable, now we have inotify support.
+    (Closes: #395306)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 16 Apr 2007 08:42:32 +0200
+
+dovecot (1.0.rc31-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 09 Apr 2007 11:55:45 +0200
+
+dovecot (1.0.rc30-2) unstable; urgency=low
+
+  * debian/dovecot-common.init: check if /etc/inetd.conf exists before
+    calling sed on it. (Closes: #417299)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 08 Apr 2007 16:58:30 +0200
+
+dovecot (1.0.rc30-1) unstable; urgency=low
+
+  * New upstream release.
+  * 
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sat, 07 Apr 2007 11:17:45 +0200
+
+dovecot (1.0.rc29-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/rules: ship convert-tool in dovecot-common. (Closes: #416909)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sat, 31 Mar 2007 14:15:39 +0200
+
+dovecot (1.0.rc28-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 25 Mar 2007 14:02:28 +0200
+
+dovecot (1.0.rc27-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 14 Mar 2007 14:39:04 +0100
+
+dovecot (1.0.rc26-4) unstable; urgency=low
+
+  * debian/dovecot-common.postinst: fixed a typo. (Closes: #414672)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Tue, 13 Mar 2007 08:45:47 +0100
+
+dovecot (1.0.rc26-3) unstable; urgency=low
+
+  * debian/control: depends on ucf (>= 2.0020). (Closes: #414032)
+  * debian/dovecot-common.postinst: handles better chmod/chown on package
+    upgrade. (Closes: #414257)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 12 Mar 2007 10:03:34 +0100
+
+dovecot (1.0.rc26-2) unstable; urgency=low
+
+  * debian/control:
+    + dovecot-{imapd,pop3d}: depends on the same-source dovecot-common.
+      (Closes: #414032)
+  * debian/rules: fixed permission for dovecot.conf. (Closes: #413995)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Fri,  9 Mar 2007 12:57:50 +0100
+
+dovecot (1.0.rc26-1) unstable; urgency=low
+
+  * New upstream release.
+  * Add support for ucf, thanks to Vincent Danjean for providing a full patch.
+    (Closes: #413081)
+  * debian/dovecot-common.init: create /var/run directories at start-up time.
+    (Closes: #376143)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed,  7 Mar 2007 11:26:56 +0100
+
+dovecot (1.0.rc25-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Fri,  2 Mar 2007 13:44:44 +0100
+
+dovecot (1.0.rc24-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Fri, 23 Feb 2007 15:47:30 +0100
+
+dovecot (1.0.rc23-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/patches/documentation.dpatch, debian/patches/xfs_quotas.dpatch:
+    removed, applied upstream.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 21 Feb 2007 09:34:44 +0100
+
+dovecot (1.0.rc22-2) UNRELEASED; urgency=low
+
+  * debian/watch: added.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Fri,  9 Feb 2007 12:15:34 +0100
+
+dovecot (1.0.rc22-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed,  7 Feb 2007 09:38:34 +0100
+
+dovecot (1.0.rc21-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon,  5 Feb 2007 16:23:33 +0100
+
+dovecot (1.0.rc19-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 24 Jan 2007 00:03:38 +0100
+
+dovecot (1.0.rc18-2) unstable; urgency=low
+
+  * dovecot-sieve: updated to cvs version 1.0.1.
+  * debian/README.Debian: updated for the new setting mail_location, which
+    substitutes the old default_mail_env. (Closes: #408025)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Tue, 23 Jan 2007 10:15:36 +0100
+
+dovecot (1.0.rc18-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 22 Jan 2007 18:15:02 +0100
+
+dovecot (1.0.rc17-1) unstable; urgency=low
+
+  * New upstream release.
+  * Updated dovecot-sieve from CVS.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Fri, 12 Jan 2007 09:42:47 +0100
+
+dovecot (1.0.rc15-2) unstable; urgency=medium
+
+  * debian/dovecot-common.README.Debian: updated details about raw logging;
+    thanks Chris Moore for providing a patch. (Closes: #400689)
+  * debian/patches/dovecot-example.dpatch: added a missing slash for an
+    absolute path. (Closes: #400830)
+  * debian/patches/dovecotpw.dpatch: applied patched to fix argument parsing
+    on some architectures. (Closes: #402075)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 18 Dec 2006 18:34:31 +0100
+
+dovecot (1.0.rc15-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Fixes a security bug: Off-by-one buffer overflow with mmap_disable=yes.
+    (See: http://www.dovecot.org/list/dovecot-news/2006-November/000023.html)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 20 Nov 2006 12:47:39 +0100
+
+dovecot (1.0.rc14-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Thu, 16 Nov 2006 09:37:38 +0100
+
+dovecot (1.0.rc13-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/rules:
+    + preserve upstream config.guess and config.sub. (Closes: #397404)
+    + really clean dovecot-sieve/src on clean target. (Closes: #397407)
+  * debian/control: added build-conflict with automake1.4. (Closes: #397409)
+  * dovecot-sieve/src/Makefile.am: move sieve plug-ins under
+    usr/lib/dovecot/lda/modules; thanks to Chris Vanden Berghe for pointing
+    this out.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Tue,  7 Nov 2006 09:26:56 +0100
+
+dovecot (1.0.rc12-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun,  5 Nov 2006 16:52:52 +0100
+
+dovecot (1.0.rc10-3) unstable; urgency=medium
+
+  * debian/rules: fixed two typos in the configure call. (Closes: #395016)
+  * Included dovecot-sieve plug-in from CVS. (Closes: #394885)
+  * Urgency medium: we are near the freeze, and this release must be part
+    of etch.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Tue, 31 Oct 2006 06:30:45 +0000
+
+dovecot (1.0.rc10-2) unstable; urgency=low
+
+  * debian/patches/dovecot-example.dpatch: commented out a close brace.
+    (Closes: #394785)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Mon, 23 Oct 2006 08:17:13 +0000
+
+dovecot (1.0.rc10-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #393004)
+  * debian/patches/dovecot-example.dpatch:
+    + added specific comments to the mail_extra_groups option.
+      (Closes: #383453)
+    + removed duplicated LDA section. (Closes: #391632)
+  * debian/dovecot.8: fixed a layout error. (Closes: #393080)
+  * debian/dovecot-common.init: added LSB headers.
+  * Switched to the upstream dovecot deliver (LDA).
+  * debian/patches/quota_v2.dpatch: added, thanks to Jonas Smedegaard.
+    (Closes: #377563)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 22 Oct 2006 08:55:16 +0000
+
+dovecot (1.0.rc7-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #377840, #385101)
+  * debian/patches/dovecot-example.dpatch: set a default value for
+    pop3_uidl_format. (Closes: #383883)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Tue, 29 Aug 2006 10:38:17 +0200
+
+dovecot (1.0.rc6-1) unstable; urgency=low
+
+  * New upstream release:
+    + Fixed imap segfaults on small mbox files (2 bytes). (Closes: #377840)
+    + Fixed a known bug in dovecot's IDLE handler. (Closes: #351828)
+    + Added support for quota2. (Closes: #377563)
+  * debian/control: converted build-depends on linux-kernel-headers to
+    build-conflicts to help the GNU/kFreeBSD port. (Closes: #377479)
+  * debian/control: changed maintainer to "Dovecot Maintainers"; no changes
+    to the email addresses.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Tue, 15 Aug 2006 10:58:57 +0200
+
+dovecot (1.0.rc2-2) unstable; urgency=low
+
+  * patched the quota plugin to fix a missing symbol (Closes: #377018)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri,  7 Jul 2006 10:50:04 -0400
+
+dovecot (1.0.rc2-1) unstable; urgency=high
+
+  * New upstream release
+  * Update dovecot-lda to the latest version (05132006)
+  * IPv6 with SSL/TLS should work now.  (Closes: #374783)
+  * go back to using poll instead of epoll.  (Closes: #376222)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu,  6 Jul 2006 00:47:56 -0400
+
+dovecot (1.0.rc1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Add a build-dependency on linux-kernel-headers for the xfs quotas 
+    stuff.  Make it higher than the version in sarge because sarges xfs
+    includes are too old.  If any knowledgeable person would like to 
+    give me a patch for this, please do.  (Closes: #374793)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 28 Jun 2006 11:42:07 -0400
+
+dovecot (1.0.beta9-1) unstable; urgency=low
+
+  * New upstream release
+  * Added XFS quota support.  Thanks  Pawel Jarosz <pj@rsi.pl> 
+    (Closes: #373936)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 19 Jun 2006 16:55:20 -0400
+
+dovecot (1.0.beta8-4) unstable; urgency=high
+
+  * Unfortunately, the patch in the last version broke the mysql module.
+    Fixed thanks to Martin Pitt.  (Closes: #369359, #373227)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sun, 11 Jun 2006 16:27:43 -0400
+
+dovecot (1.0.beta8-3) unstable; urgency=high
+
+  * [SECURITY] SQL injection could occur in the postgresql module with
+    certain client character encodings. (See CVE-2006-2314)
+    Used the patch from upstream and Martin Pitt <martin.pitt@ubuntu.com>.
+    Thanks Martin.  (Closes: #369359)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sun, 11 Jun 2006 15:33:55 -0400
+
+dovecot (1.0.beta8-2) unstable; urgency=high
+
+  * Don't chown/chmod ssl certificate unless we created it.
+    (Closes: #364766)
+  * Upstream fixed the crash if passwd-file had entries without passwords.
+    (Closes: #361536)
+  * fixed up the last versions changelog to better describe the security
+    problem which was fixed there.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sun, 21 May 2006 13:16:17 -0400
+
+dovecot (1.0.beta8-1) unstable; urgency=high
+
+  * New upstream release.
+  * [SECURITY] Fixes a directory traversal vulnerability.
+    (see: http://www.dovecot.org/list/dovecot-news/2006-May/000006.html 
+    and CVE-2006-2414)
+  * Set urgency to high: this version fixes a security bug
+  * Standards-Version: 3.7.2, no changes needed.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sat, 13 May 2006 22:46:16 +0200
+
+dovecot (1.0.beta7-1) unstable; urgency=low
+
+  * New upstream version.
+  * Added sqlite support.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 12 Apr 2006 23:25:41 -0400
+
+dovecot (1.0.beta5-1) unstable; urgency=low
+
+  * New upstream version.  Also updated dovecot-lda from CVS.
+  * debian/control.  Added build-depends on flex to prevent FTBS.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu,  6 Apr 2006 16:22:46 -0400
+
+dovecot (1.0.beta3-3) unstable; urgency=low
+
+  * Compile against the newer mysql library. (Closes: #356729)
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 22 Mar 2006 13:43:04 +0000
+
+dovecot (1.0.beta3-2) unstable; urgency=low
+
+  [Fabio Tranchitella]
+  * debian/control: added build-depends on byacc.
+  * debian/rules: removed --with-vpopmail option, because libvpopmail-dev
+    is in contrib and we don't wanto to have dovecot build-depends on it.
+  * debian/patches/dovecot-example.dpatch: added two small commented 
+    block of configuration for dovecot-lda.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Sun, 26 Feb 2006 20:59:06 +0000
+
+dovecot (1.0.beta3-1) unstable; urgency=high
+
+  [Fabio Tranchitella]
+  * New upstream release, which fixes two security related bugs.
+    CVE-2006-0730 (Closes: #353341)
+  * Included dovecot-lda (ver. 20060209). (Closes: #353307, #347348, #333962)
+
+  [ Jaldhar H. Vyas ]
+  * Removed the code for upgrading impad.pem.  This might bite if you if
+    you try and upgrade a woody version of dovecot to this one.  So
+    don't do that.  (Closes: #337715)
+  * dovecot-imapd,dovecot-pop3d: depend on dovecot-common >= 1.0beta3-1 
+    as the way SSL parameters are generated has changed.  (Closes: #353404)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 17 Feb 2006 22:06:21 -0500
+
+dovecot (1.0.beta2-1) unstable; urgency=low
+
+  [Fabio Tranchitella]
+  * New upstream release.
+  * debian/rules: compile with vpopmail support. (Closes: #347838)
+  * debian/patches: removed zlib patch (merged with upstream).
+
+ -- Fabio Tranchitella <kobold@debian.org>  Thu,  2 Feb 2006 21:38:32 +0000
+
+dovecot (1.0.alpha5-1) unstable; urgency=low
+
+  [Fabio Tranchitella]
+  * New upstream release.
+  * Compile dovecot with Kerberos support. (Closes: #338384)
+  * Fixed a small typo in mbox specification. (Closes: #339789)
+  * Added man page for maildirmake.dovecot, thanks to Henry Precheur.
+    (Closes: #340498)
+  * Use /usr/lib/dovecot/modules as basedir for dynamic modules.
+    Upstream suggests /usr/lib/dovecot, but we already use it as 
+    libexec directory.
+
+ -- Fabio Tranchitella <kobold@debian.org>  Wed, 21 Dec 2005 13:44:38 +0000
+
+dovecot (1.0.alpha4-1) unstable; urgency=low
+
+  [Jaldhar H. Vyas]
+  * New upstream version.
+  * Made sure the default dovecot.conf includes mail_extra_groups=mail
+    (Closes: #336476) somehow this edit got lost at some point.
+  * use ISO8601 date format as default value for log_timestamp in
+    /etc/dovecot/dovecot.conf  (Closes: #333059)
+  * stop shipping {arch} directories in source (Closes: #334646)
+  * Include plugin for compressed mboxen (Closes: #332384)
+  * updated NEWS.Debian to warn users that the dovecot.conf syntax has
+    changed (Closes: #334209)
+  * Remember, remember, the 5th of November.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sat,  5 Nov 2005 23:19:19 -0500
+
+dovecot (1.0.alpha3-2) unstable; urgency=low
+
+  [Jaldhar H. Vyas]
+  * dovecot-common: When creating the dovecot user in the postinst,
+    the --ingroup option to adduser to add dovecot to group
+    mail isn't used anymore.
+    (Closes: #330960, #331106)
+  * commented out userdb passdb from default configuration.  Most 
+    people won't need that. (Closes: #330978)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu,  6 Oct 2005 14:25:33 -0400
+
+dovecot (1.0.alpha3-1) unstable; urgency=low
+
+  [ Fabio Tranchitella ]
+  * New upstream release (dovecot-1.0.alpha.3)
+  * debian/patches/ipv6_v6only.dpatch: removed, upstream accepted it.
+  * debian/dovecot-common.postinst: removed bashisms.
+  * debian/dovecot-common.postinst: add dovecot user to group mail.
+    (Closes: #323921)
+  * debian/control: removed conflicts with imap-server and pop3-server,
+    added replaces instead. (Closes: #324480)
+  [ Jaldhar H. Vyas ]
+  * No longer crashes when using LDAP as userdb/passdb (Closes: #320388)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 26 Sep 2005 01:42:09 -0400
+
+dovecot (0.99.20050712-2) unstable; urgency=low
+
+  * Fabio Tranchitella <kobold@debian.org>
+    + debian/control: dovecot-common has to depend on adduser.
+    + debian/patches/documentation.dpatch: some cosmetic fixes about mysql
+      backend.
+  * Jaldhar H. Vyas <jaldhar@debian.org>
+    + debian/control: tighten dovecot-imapd and dovecot-pop3d's dependency on 
+      dovecot-common (Closes: #319465)
+    + debian/patches/dovecot-example.dpatch: some more fixes to default
+      configuration.  (Closes: #319413, #319941)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 29 Jul 2005 15:37:52 -0400
+
+dovecot (0.99.20050712-1) unstable; urgency=low
+
+  * Fabio Tranchitella <kobold@debian.org>
+    + New upstream version (dovecot-stable, last update 20050712).
+      (Closes: #312893)
+    + debian/control: Standards-Version: 3.6.2 (no changes needed).
+    + debian/patches/dovecot-sql.dpatch: use the right path for mysql socket.
+      (Closes: #298874)
+  * Jaldhar H. Vyas <jaldhar@debian.org>
+    + Removed dovecot package as it was just a woody->sarge transitional
+      pseudo-package.
+    + Apply patch to debian/dovecot-common.init to help when manually
+      starting dovecot.  Thanks Roland Stigge.  (Closes: #309679)
+    + Apply patch to src/lib/network.c to support IPV6_V6ONLY.  Thanks
+      Marco D'Itri. (Closes: #308652)
+    + depend on the latest postgresql library.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 20 Jul 2005 06:30:37 -0400
+
+dovecot (0.99.14-1) unstable; urgency=low
+
+  * New upstream version.
+  * dovecot-common: another postinst regexp fix for SSL cert/key files.
+    (Closes: #294989)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sat, 12 Feb 2005 21:34:33 -0500
+
+dovecot (0.99.13-6) unstable; urgency=high
+
+  * dovecot-common: *sigh* another init script fix.  Hopefully we now
+    fully deal with dovecot being run from inetd.  Thanks again to Magnus
+    Holmgren.  (Closes: #293348)
+  * High again so -5 doesn't get into sarge.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon,  7 Feb 2005 02:58:30 -0500
+
+dovecot (0.99.13-5) unstable; urgency=high
+
+  * dovecot-common: typo in postinst resulted in incorrect generation of
+    keys for first-time installers.  Hence urgency high.
+  * dovecot-common: In init script, make extra check to make sure an 
+    IMAP or POP3 server called from inetd is dovecot and not some other 
+    random inferior product.  (Closes: #293348)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sat,  5 Feb 2005 13:56:31 -0500
+
+dovecot (0.99.13-4) unstable; urgency=low
+
+  * build depend on libmysqlclient12
+  * dovecot-common: Allow STARTTLS to work when dovecot is run from inetd
+    Thanks Magnus Holmgren (Closes: #290985)
+  * dovecot-common: let init script exit if dovecot is being run from inetd
+    Thanks Magnus Holmgren (Closes: #292195)
+  * dovecot-common: fix a number of problems in postinst
+    + fails if /etc/ssl/certs or /etc/ssl/private doesn't exist
+    + certs cannot be generated and upgrade fails if openssl is not
+      configured.  Fail more gracefully if this is the case.
+    + read the name and path for the cert from dovecot.conf instead of
+      hardcoding it.
+      Thanks Frederic Pauget (Closes: #292344)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sun, 30 Jan 2005 15:20:03 -0500
+
+dovecot (0.99.13-3) unstable; urgency=high
+
+  * Oops -2 had to be urgency=high so -1 doesn't get into sarge.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sat,  8 Jan 2005 12:11:38 -0500
+
+dovecot (0.99.13-2) unstable; urgency=low
+
+  * dovecot-imapd, dovecot-pop3d:  It occurred to me that the effects of 
+    fixing #288391 will cause confusion in the minds of new installers so I 
+    should add a warning in README.Debian and NEWS.Debian in a vain 
+    effort to stave off swarms of bug reports.  (Vain, because no one 
+    actually reads documentation anyway.)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sat,  8 Jan 2005 11:29:59 -0500
+
+dovecot (0.99.13-1) unstable; urgency=high
+
+  * New upstream version.
+  * dovecot-imapd, dovecot-pop3d: No longer mess with dovecot.conf in postinst
+    (Closes: #288391)
+  * urgency high due to #288391 being a release-critical bug.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri,  7 Jan 2005 17:37:08 -0500
+
+dovecot (0.99.12-1) unstable; urgency=low
+
+  * New upstream version.  (Yes I know 0.99.13 is just around the corner.)
+  * SASL is reenabled so this bug ("Dovecot seems not to require SASL")
+    is no longer valid (Closes: #272093)
+  * Configuration files moved to /etc/dovecot (Closes: #276183)
+  * Permissions on /var/run/dovecot and /var/run/dovecot/login no longer
+    give warnings. (Closes: #283996)
+  * SSL certificate is world readable (Closes: #277114).
+  * Thanks to Jan Buren, much extra documentation has been added to
+    /usr/share/doc/dovecot-common/README.Debian
+  * Lintian overrides added.
+  * Happy new year to all you Gregorians
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 31 Dec 2004 15:55:07 -0500
+
+dovecot (0.99.11-3) unstable; urgency=medium
+
+  * applied dovecot-large-header-fix patch to prevent 100% CPU 
+    utilization when dealing with really large headers.
+    (Closes: #271458)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 13 Sep 2004 20:20:23 -0400
+
+dovecot (0.99.11-2) unstable; urgency=low
+
+  * Eliminated duplicate stanza in dovecot.conf (Closes: #270181)
+  * Reapplied CRAM-MD5 patch.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon,  6 Sep 2004 01:24:53 -0400
+
+dovecot (0.99.11-1) unstable; urgency=low
+
+  * New upstream release.
+  * patch to give bug reporting address in configure.ac.
+    Thanks Matthias Andree.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sat,  4 Sep 2004 14:24:57 -0400
+
+dovecot (0.99.10.9-2) unstable; urgency=low
+
+  * screw mipsel.
+  * Added PAM_RHOST patch.  Thanks Dean Gaudet.  (Closes: #264712)
+  * Added CRAM-MD5 patch.  Thanks Joshua Goodall.
+  * Added unexpected EOF patch from Timo.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Tue, 17 Aug 2004 01:13:20 -0400
+
+dovecot (0.99.10.9-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon,  2 Aug 2004 18:56:02 -0400
+
+dovecot (0.99.10.8-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 30 Jul 2004 08:17:51 -0400
+
+dovecot (0.99.10.7-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 14 Jul 2004 07:29:49 -0400
+
+dovecot (0.99.10.6-3) unstable; urgency=low
+
+  * Patched so dovecot follows symlinks to directories again.
+    (Closes: #256061)
+  * Changed the priority of init script so it is run after postgresql
+    (Closes: #256068)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu, 24 Jun 2004 23:57:50 -0400
+
+dovecot (0.99.10.6-2) unstable; urgency=high
+
+  * I needed to enable one more parameter in the configuration in order 
+    to get dot-locking working.  Hence this should still be high urgency.
+    (Really Closes: #185335)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 21 Jun 2004 20:02:29 -0400
+
+dovecot (0.99.10.6-1) unstable; urgency=high
+
+  * New upstream version.
+    + finally fixes dot-locking so I think it deserves high priority for
+      sarge.  (Closes: #185335)
+  * dovecot: fixed a typo in description (Closes: #254415)
+  * dovecot-common: man page for dovecot added.  Thanks Kai Hendry.
+    (Closes: #253482)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sat, 19 Jun 2004 23:18:39 -0400
+
+dovecot (0.99.10.5-4) unstable; urgency=high
+
+  * Crap, typo in dovecot-common.postinst sorry.  This should only 
+    affect new installs though.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 11 Jun 2004 22:30:41 -0400
+
+dovecot (0.99.10.5-3) unstable; urgency=high
+
+  * SECURITY:  set permissions on config files to 0600 to prevent
+    disclosure of sensitive information to local users. (Closes: #253760)
+  * SECURITY: Tightened permissions on generated SSL certificate.
+    (Closes: #253833)
+  * Made a note that dovecot-openssl.conf is not needed on Debian
+    because we generate a certificate in dovecot-commons' postinst.
+    (Closes: #253774)
+  * Added maildir-autocreate patch.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 11 Jun 2004 09:12:07 -0400
+
+dovecot (0.99.10.5-2) unstable; urgency=low
+
+  * Added maildir-stat patch.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu, 10 Jun 2004 14:39:28 -0400
+
+dovecot (0.99.10.5-1) unstable; urgency=low
+
+  * New upstream version.
+  * Enabled mysql support.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu, 27 May 2004 13:21:42 -0400
+
+dovecot (0.99.10.4-5) unstable; urgency=high
+
+  * Switched to using openssl as dovecot segfaults with gnutls7 and is
+    not compatible with gnutls10 (Closes: #244570)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 19 Apr 2004 22:45:21 -0400
+
+dovecot (0.99.10.4-4) unstable; urgency=low
+
+  * Added a patch to src/auth/db-pgsql.c from Zsolt VARGA.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Tue, 30 Mar 2004 12:49:31 -0500
+
+dovecot (0.99.10.4-3) unstable; urgency=high
+
+  * dovecot-common: Fix postinst to no longer delete /etc/pam.d/imap 
+    (Closes: #232832)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 15 Mar 2004 10:27:52 -0500
+
+dovecot (0.99.10.4-2) unstable; urgency=low
+
+  * dovecot-common: now replaces: dovecot for smoother upgrades.
+    (Closes: #223666)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu, 11 Dec 2003 09:18:12 -0500
+
+dovecot (0.99.10.4-1) unstable; urgency=low
+
+  * New upstream version
+    + This fixes the curruption of .subscriptions files wth folders in
+      maildir format. (Closes: #222272)
+  * Some extra information included in dovecot-common.README.Debian.
+    (Closes: #221106)  There should probaly be more so if you have ideas 
+    let me know.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon,  1 Dec 2003 23:41:00 -0500
+
+dovecot (0.99.10.2-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Tue, 11 Nov 2003 17:21:45 -0500
+
+dovecot (0.99.10-11) unstable; urgency=low
+
+  * Build depend on gnutls 7 instead of 5 (Closes: #219523)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu,  6 Nov 2003 22:25:00 -0500
+
+dovecot (0.99.10-10) unstable; urgency=low
+
+  * maildirmake.dovecot will now let you create maildirs whose names 
+   have spaces in them and chown them to a specified user.  Thanks Paul
+   Slootman (Closes: #219168)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Tue,  4 Nov 2003 20:00:25 +0000
+
+dovecot (0.99.10-9) unstable; urgency=low
+
+  * Don't use SASL2 as upstream says the support is broken.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Tue, 23 Sep 2003 16:27:11 +0000
+
+dovecot (0.99.10-8) unstable; urgency=low
+
+  * Patched so suid works on 2.6 kernels.  Thanks Peter Gervai.
+    (Closes: #211420)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 17 Sep 2003 17:59:10 +0000
+
+dovecot (0.99.10-7) unstable; urgency=low
+
+  * Yet another init script fix.  It should be ok now.  Thanks once again
+    to Alexis Iglauer.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 27 Aug 2003 10:56:04 -0400
+
+dovecot (0.99.10-6) unstable; urgency=low
+
+  * fix some errors in init script (closes: #207464)
+    Thanks to Adam Lackorzynski and Alexis Iglauer.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 27 Aug 2003 09:02:23 -0400
+
+dovecot (0.99.10-5) unstable; urgency=high
+
+  * dovecot-pop3d, dovecot-imapd: make sure init script doesn't 
+    attempt to start the daemons if unconfigured thus preventing 
+    segfault on startup.  (Closes: #206992, #207140)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 25 Aug 2003 16:40:53 -0400
+
+dovecot (0.99.10-4) unstable; urgency=low
+
+  * Updated PAM configuration to the new scheme and added appropriate 
+    dependency.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 22 Aug 2003 12:54:54 -0400
+
+dovecot (0.99.10-3) unstable; urgency=low
+
+  * dovecot-pop3d: Patch for proper PAM service name.
+  * dovecot-imapd, dovecot-pop3d: Make sure there is an appropriate 
+    entry in the protocol = line in /etc/dovecot.conf so the service 
+    will start up without errors. (Closes: #204213)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu, 21 Aug 2003 13:47:00 -0400
+
+dovecot (0.99.10-2.1) unstable; urgency=low
+
+  * Non-maintainer upload at request of maintainer.
+  * Fix segfault on alpha caused by time_t size. Closes: #203892.
+  * Fix segfault when user's home directory is left empty.
+
+ -- Scott James Remnant <scott@netsplit.com>  Wed,  6 Aug 2003 01:47:16 +0100
+
+dovecot (0.99.10-2) unstable; urgency=low
+
+  * corrected paths to example and configuration files in sample config
+    (Closes: #199740)
+  * Added postgresql support.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu,  3 Jul 2003 16:45:49 -0400
+
+dovecot (0.99.10-1) unstable; urgency=low
+
+  * New upstream release.
+  * PAM service name has changed to dovecot (for IMAP and POP3.)  I've included 
+    code to move /etc/pam.d/imap to /etc/pam.d/dovecot but if things suddenly 
+    stop working, this is the first thing to check.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Thu, 26 Jun 2003 22:31:07 -0400
+
+dovecot (0.99.10-0.rc2) unstable; urgency=low
+
+  * New upstream release.  Fixes broken imaps support.
+  * Typo in configure options that broke LDAP support on woody corrected.
+  * Only start /usr/sbin/dovecot if either the IMAP or POP3 servers are 
+    installed. (Closes: #192066)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 23 Jun 2003 23:26:04 -0400
+
+dovecot (0.99.9.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sun,  4 May 2003 21:49:55 -0400
+
+dovecot (0.99.9-1) unstable; urgency=low
+
+  * New upstream release.
+  * The IMAP and POP3 servers have been split into seperate package so you
+    don't have to install both.  There is also a dovecot-common package
+    for the parts they share.  The dovecot package is now a dummy just for 
+    transitioning to this new scheme.  (Closes: #187826)
+  * Allow chmod in maildirmake.dovecot to fail gracefully (Closes: #191244)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 30 Apr 2003 08:53:46 -0400
+
+dovecot (0.99.8.1-4) unstable; urgency=low
+
+  * Added a build-depends on libsasl-dev (Closes: #187516)
+  * Enabled pop3 service.  However it is still turned off in the config file by
+    default so as to not surprise anyone who thought they only had an IMAP
+    server.
+  * Consequently, changed "IMAP server" in descriptions etc. to "mail server".
+  * only skip key generation if both /etc/ssl/certs/dovecot.pem and
+    /etc/ssl/private/dovecot.pem exist.  (Closes: #187638)
+  * post-0.99.8.1 patch: Fix renaming subfolders with maildir.
+  * post-0.99.8.1 patch: Fix other maildir subfolder problems.
+  * post-0.99.8.1 patch: Fix partial body fetches.
+  * post-0.99.8.1 patch: Fix using LITERAL+APPEND.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sat,  5 Apr 2003 14:13:52 -0500
+
+dovecot (0.99.8.1-3) unstable; urgency=low
+
+  * Fixed bashism and perlism(!) in maildirmake.dovecot.  Thanks Clint
+    Adams. (Closes: #185768)
+  * Enabled LDAP support.  The configuration is in /etc/dovecot-ldap.conf
+    but is commented out.
+  * Happy new year to all Debian users still on the Julian calendar.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Tue, 25 Mar 2003 09:25:37 -0500
+
+dovecot (0.99.8.1-2) unstable; urgency=low
+
+  * Make a seperate check for /etc/ssl/private/imapd.pem in case we don't
+    have it. (Closes: #185334)
+  * Move check for dovecot user and creation code to postinsts' configure 
+    phase. (Closes: #185333)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 19 Mar 2003 01:50:10 -0500
+
+dovecot (0.99.8.1-1) unstable; urgency=low
+
+  * new upstream release.  (Closes: #184131)  Does not include the POP3
+    server or LDAP and SASL support for now so we can get into the archive
+    quickly.  Fixes segfaults in imap-master (Closes: #184231)  Fixes
+    faulty mail autodetection presets (Closes: #179625)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sun, 16 Mar 2003 15:47:54 -0500
+
+dovecot (0.99.7-4) unstable; urgency=low
+
+  * Fixed location of handlers. (Closes: #179273)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 31 Jan 2003 18:37:23 -0500
+
+dovecot (0.99.7-3) unstable; urgency=low
+
+  * doh pam file should be called imap not dovecot (Closes: #179180)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 31 Jan 2003 14:12:29 -0500
+
+dovecot (0.99.7-2) unstable; urgency=low
+
+  * Added two upstream patches to fix broken plain authentication and 
+    building with vpopmail support (which is not enabled in the Debian 
+    package yet.)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri, 17 Jan 2003 14:24:22 -0500
+
+dovecot (0.99.7-1) unstable; urgency=low
+
+  * New upstream release.
+  * Syslog no longer fills up with entries when dovecot is misconfigured.
+    (Closes: #175507)
+  * startup is logged now. shutdowns were already logged. (Closes: #175509)
+  * dovecot will not remove your SSL certificates now.  (Closes: #175282)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 15 Jan 2003 00:58:23 -0500
+
+dovecot (0.99.6rc2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Includes patch which stops dovecot from dying on alpha (Closes: #175577)
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed,  8 Jan 2003 14:22:09 -0500
+
+dovecot (0.99.5-1) unstable; urgency=low
+
+  * New upstream release with many fixes and improvements.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Fri,  3 Jan 2003 00:53:26 -0500
+
+dovecot (0.99.4-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Wed, 18 Dec 2002 09:44:39 -0500
+

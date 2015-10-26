@@ -1,0 +1,210 @@
+#!/usr/bin/python
+
+import unittest, subprocess, shutil, grp, os, os.path, sys, time
+import imaplib, poplib
+
+import testlib
+import testlib_dovecot
+
+class DovecotBasics(unittest.TestCase):
+    '''Base operational tests for Dovecot server.'''
+
+    def _setUp(self,config_mmap_disable=False):
+        '''Create test scenario.
+
+        dovecot is configured for all protocols (imap[s] and pop3[s]), a test
+        user is set up, and /var/mail/$user contains an unread and a read mail.
+        '''
+
+        self.user = testlib.TestUser()
+
+        config = '''
+protocols = imap imaps pop3 pop3s
+log_timestamp = "%Y-%m-%d %H:%M:%S "
+mail_extra_groups = mail
+'''
+        if config_mmap_disable:
+            config += '''
+mmap_disable = yes
+'''
+        config += '''
+protocol imap {
+}
+protocol pop3 {
+  pop3_uidl_format = %08Xu%08Xv
+}
+auth default {
+  mechanisms = plain
+  passdb pam {
+  }
+  userdb passwd {
+  }
+  user = root
+}
+'''
+        self.dovecot = testlib_dovecot.Dovecot(self.user,config)
+
+    def tearDown(self):
+        self.dovecot = None
+        self.user = None
+
+    def _test_pop3_proto(self, pop):
+        '''Internal factorization of POP3 protocol checks with an established
+        connection.'''
+
+        # check empty password
+        self.assertEqual(pop.user(self.user.login), '+OK')
+        self.assertRaises(poplib.error_proto, pop.pass_, '')
+            
+        # check wrong password
+        self.assertEqual(pop.user(self.user.login), '+OK')
+        self.assertRaises(poplib.error_proto, pop.pass_, '123')
+
+        # check correct password
+        self.assertEqual(pop.user(self.user.login), '+OK')
+        self.assertEqual(pop.pass_(self.user.password), '+OK Logged in.')
+
+        # check messages
+        self.assertEqual(pop.stat()[0], 2, '2 available messages')
+        self.assertEqual(pop.list()[1], ['1 163', '2 161'])
+        self.assertEqual('\n'.join(pop.retr(1)[1]), '''Date: Thu, 16 Nov 2006 17:12:23 -0800
+From: Test User 1 <test1@test1.com>
+To: Dovecot tester <dovecot@test.com>
+Subject: Test 1
+
+Some really important news.''')
+        self.assertEqual('\n'.join(pop.retr(2)[1]), '''Date: Tue, 28 Nov 2006 11:29:34 +0100
+From: Test User 2 <test2@test2.com>
+To: Dovecot tester <dovecot@test.com>
+Subject: Test 2
+
+More news.
+
+Get cracking!''')
+
+        self.assertEqual(pop.quit(), '+OK Logging out.')
+
+        # check new status
+        status = ''
+        for l in open(self.dovecot.get_mailbox()):
+            if l.startswith('Status:'):
+                status += l
+        self.assertEqual(status, 'Status: NRO\nStatus: RO\n')
+
+    def test_pop3(self):
+        '''Test POP3 protocol.'''
+
+        pop = poplib.POP3('localhost')
+        self.assertEqual(pop.getwelcome(), '+OK Dovecot ready.')
+
+        self._test_pop3_proto(pop)
+
+    def test_pop3s(self):
+        '''Test POP3S protocol.'''
+
+        pop = poplib.POP3_SSL('localhost')
+        self.assertEqual(pop.getwelcome(), '+OK Dovecot ready.')
+
+        self._test_pop3_proto(pop)
+
+    def _test_imap_proto(self, imap):
+        '''Internal factorization of IMAP4 protocol checks with an established
+        connection.'''
+
+        # invalid passwords
+        self.assertRaises(imaplib.IMAP4.error, imap.login, self.user.login, '')
+        self.assertRaises(imaplib.IMAP4.error, imap.login, self.user.login, '123')
+        
+        # correct password
+        imap.login(self.user.login, self.user.password)
+
+        # list mailboxes
+        status, list = imap.list()
+        self.assertEqual(status, 'OK')
+        self.assert_(list[0].endswith('"INBOX"'))
+
+        # check mails
+        imap.select()
+        self.assertEqual(imap.search(None, 'ALL'), ('OK', ['1 2']))
+        self.assertEqual(imap.fetch('1', '(FLAGS)'), 
+            ('OK', ['1 (FLAGS (\\Recent))']))
+        self.assertEqual(imap.fetch('2', '(FLAGS)'), 
+            ('OK', ['2 (FLAGS (\\Seen \\Recent))']))
+        self.assertEqual(imap.fetch('1', '(BODY[TEXT])')[1][0][1], 
+            'Some really important news.\r\n')
+        self.assertEqual(imap.fetch('2', '(BODY[TEXT])')[1][0][1], 
+            'More news.\r\n\r\nGet cracking!')
+
+        self.assertEqual(imap.fetch('1', '(RFC822)')[1],
+            [('1 (RFC822 {163}', 
+            '''Date: Thu, 16 Nov 2006 17:12:23 -0800\r
+From: Test User 1 <test1@test1.com>\r
+To: Dovecot tester <dovecot@test.com>\r
+Subject: Test 1\r
+\r
+Some really important news.\r
+'''), ')'])
+
+        # delete mail 1
+        self.assertEqual(imap.store('1', '+FLAGS', '\\Deleted')[0], 'OK')
+        self.assertEqual(imap.expunge()[0], 'OK')
+        self.assertEqual(imap.search(None, 'ALL'), ('OK', ['1']))
+
+        # old mail 2 is mail 1 now
+        self.assertEqual(imap.fetch('1', '(RFC822)')[1],
+            [('1 (RFC822 {161}', 
+            '''Date: Tue, 28 Nov 2006 11:29:34 +0100\r
+From: Test User 2 <test2@test2.com>\r
+To: Dovecot tester <dovecot@test.com>\r
+Subject: Test 2\r
+\r
+More news.\r
+\r
+Get cracking!'''), ')'])
+        imap.close()
+        imap.logout()
+
+    def test_imap(self):
+        '''Test IMAP4 protocol.'''
+
+        imap = imaplib.IMAP4()
+        self._test_imap_proto(imap)
+
+    def test_imaps(self):
+        '''Test IMAP4S protocol.'''
+
+        imap = imaplib.IMAP4_SSL()
+        self._test_imap_proto(imap)
+
+
+class DovecotMmapTest(DovecotBasics):
+    '''Test dovecot with mmap support.'''
+
+    def setUp(self):
+        self._setUp()
+
+    def test_configuration(self):
+        '''Test dovecot configuration has mmap support.'''
+        self.assertEquals(subprocess.call(['/bin/grep', '-q', '^mmap_disable = yes','/etc/dovecot/dovecot.conf'], stdout=subprocess.PIPE), 1)
+        
+
+class DovecotDirectTest(DovecotBasics):
+    '''Test dovecot without mmap support.'''
+
+    def setUp(self):
+        self._setUp(config_mmap_disable=True)
+
+    def test_configuration(self):
+        '''Test dovecot configuration has mmap disabled.'''
+        self.assertEquals(subprocess.call(['/bin/grep', '-q', '^mmap_disable = yes','/etc/dovecot/dovecot.conf'], stdout=subprocess.PIPE), 0)
+        
+
+
+if __name__ == '__main__':
+    os.dup2(1,2)
+    suite = unittest.TestSuite()
+    suite.addTest(unittest.TestLoader().loadTestsFromTestCase(DovecotDirectTest))
+    suite.addTest(unittest.TestLoader().loadTestsFromTestCase(DovecotMmapTest))
+    unittest.TextTestRunner(verbosity=2).run(suite)
+
+#unittest.main()

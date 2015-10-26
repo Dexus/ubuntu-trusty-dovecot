@@ -1,0 +1,685 @@
+Snowball.lo: Snowball.cc /usr/include/stdc-predef.h \
+ /usr/include/CLucene.h /usr/include/CLucene/StdHeader.h \
+ /usr/include/CLucene/CLConfig.h /usr/include/CLucene/SharedHeader.h \
+ /usr/lib/x86_64-linux-gnu/CLucene/clucene-config.h \
+ /usr/include/c++/4.8/cstddef \
+ /usr/include/x86_64-linux-gnu/c++/4.8/bits/c++config.h \
+ /usr/include/x86_64-linux-gnu/c++/4.8/bits/os_defines.h \
+ /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+ /usr/include/x86_64-linux-gnu/c++/4.8/bits/cpu_defines.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/math.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_val.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_valf.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_vall.h \
+ /usr/include/x86_64-linux-gnu/bits/inf.h \
+ /usr/include/x86_64-linux-gnu/bits/nan.h \
+ /usr/include/x86_64-linux-gnu/bits/mathdef.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/include/x86_64-linux-gnu/bits/mathinline.h \
+ /usr/include/c++/4.8/string /usr/include/c++/4.8/bits/stringfwd.h \
+ /usr/include/c++/4.8/bits/memoryfwd.h \
+ /usr/include/c++/4.8/bits/char_traits.h \
+ /usr/include/c++/4.8/bits/stl_algobase.h \
+ /usr/include/c++/4.8/bits/functexcept.h \
+ /usr/include/c++/4.8/bits/exception_defines.h \
+ /usr/include/c++/4.8/bits/cpp_type_traits.h \
+ /usr/include/c++/4.8/ext/type_traits.h \
+ /usr/include/c++/4.8/ext/numeric_traits.h \
+ /usr/include/c++/4.8/bits/stl_pair.h /usr/include/c++/4.8/bits/move.h \
+ /usr/include/c++/4.8/bits/concept_check.h \
+ /usr/include/c++/4.8/bits/stl_iterator_base_types.h \
+ /usr/include/c++/4.8/bits/stl_iterator_base_funcs.h \
+ /usr/include/c++/4.8/debug/debug.h \
+ /usr/include/c++/4.8/bits/stl_iterator.h \
+ /usr/include/c++/4.8/bits/postypes.h /usr/include/c++/4.8/cwchar \
+ /usr/include/wchar.h /usr/include/stdio.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdarg.h \
+ /usr/include/xlocale.h /usr/include/x86_64-linux-gnu/bits/wchar2.h \
+ /usr/include/c++/4.8/bits/allocator.h \
+ /usr/include/x86_64-linux-gnu/c++/4.8/bits/c++allocator.h \
+ /usr/include/c++/4.8/ext/new_allocator.h /usr/include/c++/4.8/new \
+ /usr/include/c++/4.8/exception \
+ /usr/include/c++/4.8/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/4.8/bits/localefwd.h \
+ /usr/include/x86_64-linux-gnu/c++/4.8/bits/c++locale.h \
+ /usr/include/c++/4.8/clocale /usr/include/locale.h \
+ /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/c++/4.8/iosfwd \
+ /usr/include/c++/4.8/cctype /usr/include/ctype.h \
+ /usr/include/x86_64-linux-gnu/bits/types.h \
+ /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
+ /usr/include/c++/4.8/bits/ostream_insert.h \
+ /usr/include/c++/4.8/bits/cxxabi_forced.h \
+ /usr/include/c++/4.8/bits/stl_function.h \
+ /usr/include/c++/4.8/backward/binders.h \
+ /usr/include/c++/4.8/bits/range_access.h \
+ /usr/include/c++/4.8/bits/basic_string.h \
+ /usr/include/c++/4.8/ext/atomicity.h \
+ /usr/include/x86_64-linux-gnu/c++/4.8/bits/gthr.h \
+ /usr/include/x86_64-linux-gnu/c++/4.8/bits/gthr-default.h \
+ /usr/include/pthread.h /usr/include/sched.h /usr/include/time.h \
+ /usr/include/x86_64-linux-gnu/bits/sched.h \
+ /usr/include/x86_64-linux-gnu/bits/time.h \
+ /usr/include/x86_64-linux-gnu/bits/timex.h \
+ /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
+ /usr/include/x86_64-linux-gnu/bits/setjmp.h \
+ /usr/include/x86_64-linux-gnu/c++/4.8/bits/atomic_word.h \
+ /usr/include/c++/4.8/bits/basic_string.tcc \
+ /usr/include/CLucene/debug/lucenebase.h \
+ /usr/include/CLucene/LuceneThreads.h /usr/include/CLucene/debug/mem.h \
+ /usr/include/assert.h /usr/include/CLucene/debug/error.h \
+ /usr/include/CLucene/index/IndexReader.h \
+ /usr/include/CLucene/util/Array.h /usr/include/stdlib.h \
+ /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+ /usr/include/x86_64-linux-gnu/sys/types.h \
+ /usr/include/x86_64-linux-gnu/sys/select.h \
+ /usr/include/x86_64-linux-gnu/bits/select.h \
+ /usr/include/x86_64-linux-gnu/bits/sigset.h \
+ /usr/include/x86_64-linux-gnu/bits/select2.h \
+ /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h \
+ /usr/include/x86_64-linux-gnu/bits/string3.h \
+ /usr/include/CLucene/util/VoidList.h \
+ /usr/include/CLucene/util/Equators.h /usr/include/c++/4.8/map \
+ /usr/include/c++/4.8/bits/stl_tree.h /usr/include/c++/4.8/bits/stl_map.h \
+ /usr/include/c++/4.8/bits/stl_multimap.h /usr/include/c++/4.8/list \
+ /usr/include/c++/4.8/bits/stl_list.h /usr/include/c++/4.8/bits/list.tcc \
+ /usr/include/c++/4.8/set /usr/include/c++/4.8/bits/stl_set.h \
+ /usr/include/c++/4.8/bits/stl_multiset.h /usr/include/c++/4.8/vector \
+ /usr/include/c++/4.8/bits/stl_construct.h \
+ /usr/include/c++/4.8/ext/alloc_traits.h \
+ /usr/include/c++/4.8/bits/stl_uninitialized.h \
+ /usr/include/c++/4.8/bits/stl_vector.h \
+ /usr/include/c++/4.8/bits/stl_bvector.h \
+ /usr/include/c++/4.8/bits/vector.tcc \
+ /usr/include/CLucene/index/IndexWriter.h \
+ /usr/include/CLucene/index/MergePolicy.h \
+ /usr/include/CLucene/index/MultiReader.h \
+ /usr/include/CLucene/index/IndexReader.h \
+ /usr/include/CLucene/index/Term.h \
+ /usr/include/CLucene/search/IndexSearcher.h \
+ /usr/include/CLucene/search/Searchable.h \
+ /usr/include/CLucene/search/MultiSearcher.h \
+ /usr/include/CLucene/search/DateFilter.h \
+ /usr/include/CLucene/search/Filter.h \
+ /usr/include/CLucene/search/WildcardQuery.h \
+ /usr/include/CLucene/search/MultiTermQuery.h \
+ /usr/include/CLucene/search/Query.h /usr/include/CLucene/index/Term.h \
+ /usr/include/CLucene/util/Equators.h \
+ /usr/include/CLucene/search/FuzzyQuery.h \
+ /usr/include/CLucene/search/FilteredTermEnum.h \
+ /usr/include/CLucene/index/Terms.h \
+ /usr/include/CLucene/search/PhraseQuery.h \
+ /usr/include/CLucene/search/PrefixQuery.h \
+ /usr/include/CLucene/search/RangeQuery.h \
+ /usr/include/CLucene/search/BooleanQuery.h \
+ /usr/include/CLucene/search/BooleanClause.h \
+ /usr/include/CLucene/search/TermQuery.h \
+ /usr/include/CLucene/search/SearchHeader.h \
+ /usr/include/CLucene/search/Similarity.h \
+ /usr/include/CLucene/search/Sort.h /usr/include/CLucene/search/Hits.h \
+ /usr/include/CLucene/search/Explanation.h \
+ /usr/include/CLucene/document/Document.h \
+ /usr/include/CLucene/document/Field.h \
+ /usr/include/CLucene/document/Field.h \
+ /usr/include/CLucene/document/DateField.h \
+ /usr/include/CLucene/document/DateTools.h \
+ /usr/include/x86_64-linux-gnu/sys/time.h \
+ /usr/include/x86_64-linux-gnu/sys/timeb.h \
+ /usr/include/CLucene/document/NumberTools.h \
+ /usr/include/CLucene/store/Directory.h \
+ /usr/include/CLucene/store/FSDirectory.h \
+ /usr/include/CLucene/store/Directory.h \
+ /usr/include/CLucene/store/IndexInput.h \
+ /usr/include/CLucene/store/IndexOutput.h \
+ /usr/include/CLucene/store/RAMDirectory.h \
+ /usr/include/CLucene/util/VoidMap.h \
+ /usr/include/c++/4.8/tr1/unordered_map /usr/include/c++/4.8/utility \
+ /usr/include/c++/4.8/bits/stl_relops.h \
+ /usr/include/c++/4.8/tr1/type_traits \
+ /usr/include/c++/4.8/tr1/functional_hash.h \
+ /usr/include/c++/4.8/tr1/hashtable.h \
+ /usr/include/c++/4.8/tr1/hashtable_policy.h \
+ /usr/include/c++/4.8/tr1/unordered_map.h \
+ /usr/include/c++/4.8/tr1/unordered_set \
+ /usr/include/c++/4.8/tr1/unordered_set.h \
+ /usr/include/CLucene/queryParser/QueryParser.h \
+ /usr/include/CLucene/queryParser/QueryParserTokenManager.h \
+ /usr/include/CLucene/queryParser/QueryParserConstants.h \
+ /usr/include/CLucene/document/DateTools.h \
+ /usr/include/CLucene/analysis/standard/StandardAnalyzer.h \
+ /usr/include/CLucene/analysis/AnalysisHeader.h \
+ /usr/include/CLucene/index/Payload.h \
+ /usr/include/CLucene/analysis/Analyzers.h \
+ /usr/include/CLucene/util/CLStreams.h \
+ /usr/include/CLucene/analysis/AnalysisHeader.h \
+ /usr/include/CLucene/util/BitSet.h /usr/include/CLucene/util/CLStreams.h \
+ /usr/include/CLucene/util/PriorityQueue.h SnowballAnalyzer.h \
+ ../../../src/lib/lib.h ../../../config.h /usr/include/strings.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/errno.h \
+ /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/x86_64-linux-gnu/asm/errno.h \
+ /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ ../../../src/lib/compat.h ../../../src/lib/macros.h \
+ ../../../src/lib/failures.h ../../../src/lib/data-stack.h \
+ ../../../src/lib/mempool.h ../../../src/lib/imem.h \
+ ../../../src/lib/rand.h ../../../src/lib/array-decl.h \
+ ../../../src/lib/bits.h ../../../src/lib/hash-decl.h \
+ ../../../src/lib/strfuncs.h ../../../src/lib/sort.h \
+ ../../../src/lib/strnum.h ../../../src/lib/unichar.h SnowballFilter.h \
+ /usr/include/libstemmer.h /usr/include/CLucene/analysis/Analyzers.h \
+ /usr/include/CLucene/analysis/standard/StandardTokenizer.h \
+ /usr/include/CLucene/analysis/AnalysisHeader.h \
+ /usr/include/CLucene/analysis/standard/StandardTokenizerConstants.h \
+ /usr/include/CLucene/analysis/standard/StandardFilter.h \
+ ../../../src/lib/buffer.h lucene-wrapper.h \
+ ../../../src/plugins/fts/fts-api-private.h \
+ ../../../src/plugins/fts/fts-api.h ../../../src/lib/seq-range-array.h \
+ ../../../src/lib/guid.h
+
+/usr/include/stdc-predef.h:
+
+/usr/include/CLucene.h:
+
+/usr/include/CLucene/StdHeader.h:
+
+/usr/include/CLucene/CLConfig.h:
+
+/usr/include/CLucene/SharedHeader.h:
+
+/usr/lib/x86_64-linux-gnu/CLucene/clucene-config.h:
+
+/usr/include/c++/4.8/cstddef:
+
+/usr/include/x86_64-linux-gnu/c++/4.8/bits/c++config.h:
+
+/usr/include/x86_64-linux-gnu/c++/4.8/bits/os_defines.h:
+
+/usr/include/features.h:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/x86_64-linux-gnu/c++/4.8/bits/cpu_defines.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/usr/include/math.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_val.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_valf.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_vall.h:
+
+/usr/include/x86_64-linux-gnu/bits/inf.h:
+
+/usr/include/x86_64-linux-gnu/bits/nan.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathdef.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathinline.h:
+
+/usr/include/c++/4.8/string:
+
+/usr/include/c++/4.8/bits/stringfwd.h:
+
+/usr/include/c++/4.8/bits/memoryfwd.h:
+
+/usr/include/c++/4.8/bits/char_traits.h:
+
+/usr/include/c++/4.8/bits/stl_algobase.h:
+
+/usr/include/c++/4.8/bits/functexcept.h:
+
+/usr/include/c++/4.8/bits/exception_defines.h:
+
+/usr/include/c++/4.8/bits/cpp_type_traits.h:
+
+/usr/include/c++/4.8/ext/type_traits.h:
+
+/usr/include/c++/4.8/ext/numeric_traits.h:
+
+/usr/include/c++/4.8/bits/stl_pair.h:
+
+/usr/include/c++/4.8/bits/move.h:
+
+/usr/include/c++/4.8/bits/concept_check.h:
+
+/usr/include/c++/4.8/bits/stl_iterator_base_types.h:
+
+/usr/include/c++/4.8/bits/stl_iterator_base_funcs.h:
+
+/usr/include/c++/4.8/debug/debug.h:
+
+/usr/include/c++/4.8/bits/stl_iterator.h:
+
+/usr/include/c++/4.8/bits/postypes.h:
+
+/usr/include/c++/4.8/cwchar:
+
+/usr/include/wchar.h:
+
+/usr/include/stdio.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdarg.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar2.h:
+
+/usr/include/c++/4.8/bits/allocator.h:
+
+/usr/include/x86_64-linux-gnu/c++/4.8/bits/c++allocator.h:
+
+/usr/include/c++/4.8/ext/new_allocator.h:
+
+/usr/include/c++/4.8/new:
+
+/usr/include/c++/4.8/exception:
+
+/usr/include/c++/4.8/bits/atomic_lockfree_defines.h:
+
+/usr/include/c++/4.8/bits/localefwd.h:
+
+/usr/include/x86_64-linux-gnu/c++/4.8/bits/c++locale.h:
+
+/usr/include/c++/4.8/clocale:
+
+/usr/include/locale.h:
+
+/usr/include/x86_64-linux-gnu/bits/locale.h:
+
+/usr/include/c++/4.8/iosfwd:
+
+/usr/include/c++/4.8/cctype:
+
+/usr/include/ctype.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
+
+/usr/include/c++/4.8/bits/ostream_insert.h:
+
+/usr/include/c++/4.8/bits/cxxabi_forced.h:
+
+/usr/include/c++/4.8/bits/stl_function.h:
+
+/usr/include/c++/4.8/backward/binders.h:
+
+/usr/include/c++/4.8/bits/range_access.h:
+
+/usr/include/c++/4.8/bits/basic_string.h:
+
+/usr/include/c++/4.8/ext/atomicity.h:
+
+/usr/include/x86_64-linux-gnu/c++/4.8/bits/gthr.h:
+
+/usr/include/x86_64-linux-gnu/c++/4.8/bits/gthr-default.h:
+
+/usr/include/pthread.h:
+
+/usr/include/sched.h:
+
+/usr/include/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/sched.h:
+
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/timex.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+
+/usr/include/x86_64-linux-gnu/c++/4.8/bits/atomic_word.h:
+
+/usr/include/c++/4.8/bits/basic_string.tcc:
+
+/usr/include/CLucene/debug/lucenebase.h:
+
+/usr/include/CLucene/LuceneThreads.h:
+
+/usr/include/CLucene/debug/mem.h:
+
+/usr/include/assert.h:
+
+/usr/include/CLucene/debug/error.h:
+
+/usr/include/CLucene/index/IndexReader.h:
+
+/usr/include/CLucene/util/Array.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigset.h:
+
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
+/usr/include/x86_64-linux-gnu/sys/sysmacros.h:
+
+/usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
+
+/usr/include/string.h:
+
+/usr/include/x86_64-linux-gnu/bits/string3.h:
+
+/usr/include/CLucene/util/VoidList.h:
+
+/usr/include/CLucene/util/Equators.h:
+
+/usr/include/c++/4.8/map:
+
+/usr/include/c++/4.8/bits/stl_tree.h:
+
+/usr/include/c++/4.8/bits/stl_map.h:
+
+/usr/include/c++/4.8/bits/stl_multimap.h:
+
+/usr/include/c++/4.8/list:
+
+/usr/include/c++/4.8/bits/stl_list.h:
+
+/usr/include/c++/4.8/bits/list.tcc:
+
+/usr/include/c++/4.8/set:
+
+/usr/include/c++/4.8/bits/stl_set.h:
+
+/usr/include/c++/4.8/bits/stl_multiset.h:
+
+/usr/include/c++/4.8/vector:
+
+/usr/include/c++/4.8/bits/stl_construct.h:
+
+/usr/include/c++/4.8/ext/alloc_traits.h:
+
+/usr/include/c++/4.8/bits/stl_uninitialized.h:
+
+/usr/include/c++/4.8/bits/stl_vector.h:
+
+/usr/include/c++/4.8/bits/stl_bvector.h:
+
+/usr/include/c++/4.8/bits/vector.tcc:
+
+/usr/include/CLucene/index/IndexWriter.h:
+
+/usr/include/CLucene/index/MergePolicy.h:
+
+/usr/include/CLucene/index/MultiReader.h:
+
+/usr/include/CLucene/index/IndexReader.h:
+
+/usr/include/CLucene/index/Term.h:
+
+/usr/include/CLucene/search/IndexSearcher.h:
+
+/usr/include/CLucene/search/Searchable.h:
+
+/usr/include/CLucene/search/MultiSearcher.h:
+
+/usr/include/CLucene/search/DateFilter.h:
+
+/usr/include/CLucene/search/Filter.h:
+
+/usr/include/CLucene/search/WildcardQuery.h:
+
+/usr/include/CLucene/search/MultiTermQuery.h:
+
+/usr/include/CLucene/search/Query.h:
+
+/usr/include/CLucene/index/Term.h:
+
+/usr/include/CLucene/util/Equators.h:
+
+/usr/include/CLucene/search/FuzzyQuery.h:
+
+/usr/include/CLucene/search/FilteredTermEnum.h:
+
+/usr/include/CLucene/index/Terms.h:
+
+/usr/include/CLucene/search/PhraseQuery.h:
+
+/usr/include/CLucene/search/PrefixQuery.h:
+
+/usr/include/CLucene/search/RangeQuery.h:
+
+/usr/include/CLucene/search/BooleanQuery.h:
+
+/usr/include/CLucene/search/BooleanClause.h:
+
+/usr/include/CLucene/search/TermQuery.h:
+
+/usr/include/CLucene/search/SearchHeader.h:
+
+/usr/include/CLucene/search/Similarity.h:
+
+/usr/include/CLucene/search/Sort.h:
+
+/usr/include/CLucene/search/Hits.h:
+
+/usr/include/CLucene/search/Explanation.h:
+
+/usr/include/CLucene/document/Document.h:
+
+/usr/include/CLucene/document/Field.h:
+
+/usr/include/CLucene/document/Field.h:
+
+/usr/include/CLucene/document/DateField.h:
+
+/usr/include/CLucene/document/DateTools.h:
+
+/usr/include/x86_64-linux-gnu/sys/time.h:
+
+/usr/include/x86_64-linux-gnu/sys/timeb.h:
+
+/usr/include/CLucene/document/NumberTools.h:
+
+/usr/include/CLucene/store/Directory.h:
+
+/usr/include/CLucene/store/FSDirectory.h:
+
+/usr/include/CLucene/store/Directory.h:
+
+/usr/include/CLucene/store/IndexInput.h:
+
+/usr/include/CLucene/store/IndexOutput.h:
+
+/usr/include/CLucene/store/RAMDirectory.h:
+
+/usr/include/CLucene/util/VoidMap.h:
+
+/usr/include/c++/4.8/tr1/unordered_map:
+
+/usr/include/c++/4.8/utility:
+
+/usr/include/c++/4.8/bits/stl_relops.h:
+
+/usr/include/c++/4.8/tr1/type_traits:
+
+/usr/include/c++/4.8/tr1/functional_hash.h:
+
+/usr/include/c++/4.8/tr1/hashtable.h:
+
+/usr/include/c++/4.8/tr1/hashtable_policy.h:
+
+/usr/include/c++/4.8/tr1/unordered_map.h:
+
+/usr/include/c++/4.8/tr1/unordered_set:
+
+/usr/include/c++/4.8/tr1/unordered_set.h:
+
+/usr/include/CLucene/queryParser/QueryParser.h:
+
+/usr/include/CLucene/queryParser/QueryParserTokenManager.h:
+
+/usr/include/CLucene/queryParser/QueryParserConstants.h:
+
+/usr/include/CLucene/document/DateTools.h:
+
+/usr/include/CLucene/analysis/standard/StandardAnalyzer.h:
+
+/usr/include/CLucene/analysis/AnalysisHeader.h:
+
+/usr/include/CLucene/index/Payload.h:
+
+/usr/include/CLucene/analysis/Analyzers.h:
+
+/usr/include/CLucene/util/CLStreams.h:
+
+/usr/include/CLucene/analysis/AnalysisHeader.h:
+
+/usr/include/CLucene/util/BitSet.h:
+
+/usr/include/CLucene/util/CLStreams.h:
+
+/usr/include/CLucene/util/PriorityQueue.h:
+
+SnowballAnalyzer.h:
+
+../../../src/lib/lib.h:
+
+../../../config.h:
+
+/usr/include/strings.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/limits.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/syslimits.h:
+
+/usr/include/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/errno.h:
+
+/usr/include/linux/errno.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/asm-generic/errno.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+../../../src/lib/compat.h:
+
+../../../src/lib/macros.h:
+
+../../../src/lib/failures.h:
+
+../../../src/lib/data-stack.h:
+
+../../../src/lib/mempool.h:
+
+../../../src/lib/imem.h:
+
+../../../src/lib/rand.h:
+
+../../../src/lib/array-decl.h:
+
+../../../src/lib/bits.h:
+
+../../../src/lib/hash-decl.h:
+
+../../../src/lib/strfuncs.h:
+
+../../../src/lib/sort.h:
+
+../../../src/lib/strnum.h:
+
+../../../src/lib/unichar.h:
+
+SnowballFilter.h:
+
+/usr/include/libstemmer.h:
+
+/usr/include/CLucene/analysis/Analyzers.h:
+
+/usr/include/CLucene/analysis/standard/StandardTokenizer.h:
+
+/usr/include/CLucene/analysis/AnalysisHeader.h:
+
+/usr/include/CLucene/analysis/standard/StandardTokenizerConstants.h:
+
+/usr/include/CLucene/analysis/standard/StandardFilter.h:
+
+../../../src/lib/buffer.h:
+
+lucene-wrapper.h:
+
+../../../src/plugins/fts/fts-api-private.h:
+
+../../../src/plugins/fts/fts-api.h:
+
+../../../src/lib/seq-range-array.h:
+
+../../../src/lib/guid.h:

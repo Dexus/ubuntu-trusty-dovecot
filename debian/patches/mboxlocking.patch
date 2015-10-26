@@ -1,0 +1,58 @@
+From: Jaldhar H. Vyas <jaldhar@debian.org>
+Date: Thu Aug 22 22:44:48 EDT 2013
+Subject: policy 22.6 compliant mbox write locking 
+Description: For NFS safety, prefer fcntl to dotlocks.  Dovecots default is
+ the other way around.
+Bug: #720502
+---
+ doc/example-config/conf.d/10-mail.conf     |    8 +++++++-
+ src/config/all-settings.c                  |    2 +-
+ src/lib-storage/index/mbox/mbox-settings.c |    2 +-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+Index: dovecot-2.2.19/doc/example-config/conf.d/10-mail.conf
+===================================================================
+--- dovecot-2.2.19.orig/doc/example-config/conf.d/10-mail.conf	2015-10-04 20:54:45.611958538 -0400
++++ dovecot-2.2.19/doc/example-config/conf.d/10-mail.conf	2015-10-04 20:54:45.607958570 -0400
+@@ -295,8 +295,14 @@
+ # in is important to avoid deadlocks if other MTAs/MUAs are using multiple
+ # locking methods as well. Some operating systems don't allow using some of
+ # them simultaneously.
++#
++# The Debian value for mbox_write_locks differs from upstream Dovecot. It is
++# changed to be compliant with Debian Policy (section 11.6) for NFS safety.
++#       Dovecot: mbox_write_locks = dotlock fcntl
++#       Debian:  mbox_write_locks = fcntl dotlock
++#
+ #mbox_read_locks = fcntl
+-#mbox_write_locks = dotlock fcntl
++#mbox_write_locks = fcntl dotlock
+ 
+ # Maximum time to wait for lock (all of them) before aborting.
+ #mbox_lock_timeout = 5 mins
+Index: dovecot-2.2.19/src/config/all-settings.c
+===================================================================
+--- dovecot-2.2.19.orig/src/config/all-settings.c	2015-10-04 20:54:45.611958538 -0400
++++ dovecot-2.2.19/src/config/all-settings.c	2015-10-04 20:54:45.607958570 -0400
+@@ -896,7 +896,7 @@
+ };
+ static const struct mbox_settings mbox_default_settings = {
+ 	.mbox_read_locks = "fcntl",
+-	.mbox_write_locks = "dotlock fcntl",
++	.mbox_write_locks = "fcntl dotlock",
+ 	.mbox_lock_timeout = 5*60,
+ 	.mbox_dotlock_change_timeout = 2*60,
+ 	.mbox_min_index_size = 0,
+Index: dovecot-2.2.19/src/lib-storage/index/mbox/mbox-settings.c
+===================================================================
+--- dovecot-2.2.19.orig/src/lib-storage/index/mbox/mbox-settings.c	2015-10-04 20:54:45.611958538 -0400
++++ dovecot-2.2.19/src/lib-storage/index/mbox/mbox-settings.c	2015-10-04 20:54:45.607958570 -0400
+@@ -27,7 +27,7 @@
+ 
+ static const struct mbox_settings mbox_default_settings = {
+ 	.mbox_read_locks = "fcntl",
+-	.mbox_write_locks = "dotlock fcntl",
++	.mbox_write_locks = "fcntl dotlock",
+ 	.mbox_lock_timeout = 5*60,
+ 	.mbox_dotlock_change_timeout = 2*60,
+ 	.mbox_min_index_size = 0,

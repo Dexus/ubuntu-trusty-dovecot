@@ -1,0 +1,4 @@
+8410ff76a25d1d892188948926968c18  usr/lib/dovecot/modules/libdriver_mysql.so
+dca3e7a6e01761693b9e9ac1254affe4  usr/share/doc/dovecot-mysql/changelog.Debian.gz
+1343ef8c7af409a433f14f357110991a  usr/share/doc/dovecot-mysql/changelog.gz
+72f5d634266d31a510c2ee87b700ecda  usr/share/doc/dovecot-mysql/copyright

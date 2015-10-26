@@ -1,0 +1,42 @@
+From: Marco Nenciarini <mnencia@debian.org>
+Date: Sat, 5 Mar 2011 11:19:07 +0100
+Updated: Mon, 25 Nov 2013 20:11:59 -0500
+Subject: split-protocols
+Description: Set default protocols value as empty and enable each
+ protocol in its own configuration file
+---
+ doc/example-config/dovecot.conf                    |    4 ++--
+ .../doc/example-config/conf.d/20-managesieve.conf  |    3 ---
+ src/config/all-settings.c                          |    2 +-
+ src/master/master-settings.c                       |    2 +-
+ 4 files changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/doc/example-config/dovecot.conf b/doc/example-config/dovecot.conf
+index 5697661..c802011 100644
+--- a/doc/example-config/dovecot.conf
++++ b/doc/example-config/dovecot.conf
+@@ -20,8 +20,8 @@
+ # options. The paths listed here are for configure --prefix=/usr
+ # --sysconfdir=/etc --localstatedir=/var
+ 
+-# Protocols we want to be serving.
+-#protocols = imap pop3 lmtp
++# Enable installed protocols
++!include_try /usr/share/dovecot/protocols.d/*.protocol
+ 
+ # A comma separated list of IPs or hosts where to listen in for connections. 
+ # "*" listens in all IPv4 interfaces, "::" listens in all IPv6 interfaces.
+diff --git a/pigeonhole/doc/example-config/conf.d/20-managesieve.conf b/pigeonhole/doc/example-config/conf.d/20-managesieve.conf
+index 784b660..e1dedb1 100644
+--- a/pigeonhole/doc/example-config/conf.d/20-managesieve.conf
++++ b/pigeonhole/doc/example-config/conf.d/20-managesieve.conf
+@@ -2,9 +2,6 @@
+ ## ManageSieve specific settings
+ ##
+ 
+-# Uncomment to enable managesieve protocol:
+-#protocols = $protocols sieve
+-
+ # Service definitions
+ 
+ #service managesieve-login {

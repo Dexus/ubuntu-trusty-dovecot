@@ -1,0 +1,19 @@
+Package: dovecot-sqlite
+Source: dovecot
+Version: 1:2.2.19-0c~trusty
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 723
+Depends: libc6 (>= 2.14), libsqlite3-0 (>= 3.5.9), dovecot-core (= 1:2.2.19-0c~trusty)
+Section: mail
+Priority: optional
+Homepage: http://dovecot.org/
+Description: secure POP3/IMAP server - SQLite support
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package provides SQLite support for Dovecot.
+Original-Maintainer: Dovecot Maintainers <jaldhar-dovecot@debian.org>

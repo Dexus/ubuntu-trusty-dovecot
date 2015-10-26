@@ -1,0 +1,23 @@
+DOVECOT_INSTALLED=yes
+DOVECOT_CFLAGS="-std=gnu99 -g -O2 -fPIE -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -W -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith -Wchar-subscripts -Wformat=2 -Wbad-function-cast -fno-builtin-strftime -Wstrict-aliasing=2   "
+DOVECOT_LIBS=""
+DOVECOT_SSL_LIBS="-lssl -lcrypto  "
+DOVECOT_SQL_LIBS=""
+DOVECOT_COMPRESS_LIBS=" -lz -lbz2 -llzma"
+
+LIBDOVECOT='-L/usr/lib/dovecot -ldovecot'
+LIBDOVECOT_LOGIN='-ldovecot-login -lssl -lcrypto  '
+LIBDOVECOT_SQL=-ldovecot-sql
+LIBDOVECOT_COMPRESS=-ldovecot-compression
+LIBDOVECOT_LDA=-ldovecot-lda
+LIBDOVECOT_STORAGE='-ldovecot-storage '
+LIBDOVECOT_DSYNC=-ldovecot-dsync
+
+
+LIBDOVECOT_INCLUDE=-I/usr/include/dovecot
+
+dovecot_pkgincludedir=/usr/include/dovecot
+dovecot_pkglibdir=/usr/lib/dovecot
+dovecot_pkglibexecdir=/usr/lib/dovecot
+dovecot_docdir=/usr/share/doc/dovecot
+dovecot_moduledir=/usr/lib/dovecot/modules

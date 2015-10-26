@@ -1,0 +1,46 @@
+Description: Multi Delim supprot and lookup change
+ .
+ dovecot (1:2.2.12-1~trusty) trusty; urgency=medium
+ .
+   * Multidelim support and lookup
+Author: Patrick Domack <patrickdk@patrickdk.com>
+
+Index: dovecot-2.2.19/src/lmtp/commands.c
+===================================================================
+--- dovecot-2.2.19.orig/src/lmtp/commands.c	2015-10-04 20:54:49.351916198 -0400
++++ dovecot-2.2.19/src/lmtp/commands.c	2015-10-04 20:54:49.351916198 -0400
+@@ -462,7 +462,7 @@
+ 		return;
+ 
+ 	domain = strchr(address, '@');
+-	p = strstr(address, client->unexpanded_lda_set->recipient_delimiter);
++	p = strpbrk(address, client->unexpanded_lda_set->recipient_delimiter);
+ 	if (p != NULL && (domain == NULL || p < domain)) {
+ 		/* user+detail@domain */
+ 		*username_r = t_strdup_until(*username_r, p);
+@@ -647,7 +647,7 @@
+ 
+ 	memset(&input, 0, sizeof(input));
+ 	input.module = input.service = "lmtp";
+-	input.username = username;
++	input.username = address;
+ 	input.local_ip = client->local_ip;
+ 	input.remote_ip = client->remote_ip;
+ 	input.local_port = client->local_port;
+@@ -657,6 +657,16 @@
+ 	ret = mail_storage_service_lookup(storage_service, &input,
+ 					  &rcpt->service_user, &error);
+ 
++        if (ret<=0 && strlen(detail)>0) {
++		input.username = username;
++		ret = mail_storage_service_lookup(storage_service, &input,
++					  &rcpt->service_user, &error);
++	} else if(ret>0) {
++		username=t_strdup(address);
++		if(strlen(detail)>0)
++			detail = "";
++	}
++
+ 	if (ret < 0) {
+ 		prefix = t_strdup_printf(ERRSTR_TEMP_USERDB_FAIL_PREFIX,
+ 					 username);

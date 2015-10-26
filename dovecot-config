@@ -1,0 +1,42 @@
+DOVECOT_INSTALLED=no
+DOVECOT_CFLAGS="-std=gnu99 -g -O2 -fPIE -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -W -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith -Wchar-subscripts -Wformat=2 -Wbad-function-cast -fno-builtin-strftime -Wstrict-aliasing=2   "
+DOVECOT_LIBS=""
+DOVECOT_SSL_LIBS="-lssl -lcrypto  "
+DOVECOT_SQL_LIBS=""
+DOVECOT_COMPRESS_LIBS=" -lz -lbz2 -llzma"
+
+LIBDOVECOT="/build-src/src/dovecot-2.2.19/src/lib-dovecot/libdovecot.la -export-dynamic -ldl"
+LIBDOVECOT_LOGIN="/build-src/src/dovecot-2.2.19/src/login-common/libdovecot-login.la -lssl -lcrypto  "
+LIBDOVECOT_SQL="/build-src/src/dovecot-2.2.19/src/lib-sql/libsql.la"
+LIBDOVECOT_COMPRESS="/build-src/src/dovecot-2.2.19/src/lib-compression/libcompression.la"
+LIBDOVECOT_LDA="/build-src/src/dovecot-2.2.19/src/lib-lda/libdovecot-lda.la"
+LIBDOVECOT_STORAGE="/build-src/src/dovecot-2.2.19/src/lib-storage/libdovecot-storage.la /build-src/src/dovecot-2.2.19/src/lib-imap-storage/libimap-storage.la"
+LIBDOVECOT_DSYNC="/build-src/src/dovecot-2.2.19/src/doveadm/dsync/libdovecot-dsync.la"
+
+LIBDOVECOT_DEPS="/build-src/src/dovecot-2.2.19/src/lib-dovecot/libdovecot.la"
+LIBDOVECOT_LOGIN_DEPS="/build-src/src/dovecot-2.2.19/src/login-common/libdovecot-login.la"
+LIBDOVECOT_SQL_DEPS="/build-src/src/dovecot-2.2.19/src/lib-sql/libsql.la"
+LIBDOVECOT_COMPRESS_DEPS="/build-src/src/dovecot-2.2.19/src/lib-compression/libcompression.la"
+LIBDOVECOT_LDA_DEPS="/build-src/src/dovecot-2.2.19/src/lib-lda/libdovecot-lda.la"
+LIBDOVECOT_STORAGE_DEPS="/build-src/src/dovecot-2.2.19/src/lib-storage/libdovecot-storage.la /build-src/src/dovecot-2.2.19/src/lib-imap-storage/libimap-storage.la"
+LIBDOVECOT_DSYNC_DEPS="/build-src/src/dovecot-2.2.19/src/doveadm/dsync/libdovecot-dsync.la"
+
+LIBDOVECOT_INCLUDE="-I/build-src/src/dovecot-2.2.19 -I/build-src/src/dovecot-2.2.19/src/lib -I/build-src/src/dovecot-2.2.19/src/lib-dict -I/build-src/src/dovecot-2.2.19/src/lib-dns -I/build-src/src/dovecot-2.2.19/src/lib-http -I/build-src/src/dovecot-2.2.19/src/lib-mail -I/build-src/src/dovecot-2.2.19/src/lib-imap -I/build-src/src/dovecot-2.2.19/src/lib-fs -I/build-src/src/dovecot-2.2.19/src/lib-charset -I/build-src/src/dovecot-2.2.19/src/lib-auth -I/build-src/src/dovecot-2.2.19/src/lib-master -I/build-src/src/dovecot-2.2.19/src/lib-ssl-iostream -I/build-src/src/dovecot-2.2.19/src/lib-compression -I/build-src/src/dovecot-2.2.19/src/lib-settings -I/build-src/src/dovecot-2.2.19/src/lib-test -I/build-src/src/dovecot-2.2.19/src/lib-sasl -I/build-src/src/dovecot-2.2.19/src/lib-stats"
+LIBDOVECOT_LDA_INCLUDE="-I/build-src/src/dovecot-2.2.19/src/lib-lda -I/build-src/src/dovecot-2.2.19/src/lda"
+LIBDOVECOT_DOVEADM_INCLUDE="-I/build-src/src/dovecot-2.2.19/src/doveadm"
+LIBDOVECOT_STORAGE_INCLUDE="-I/build-src/src/dovecot-2.2.19/src/lib-index -I/build-src/src/dovecot-2.2.19/src/lib-storage -I/build-src/src/dovecot-2.2.19/src/lib-storage/list -I/build-src/src/dovecot-2.2.19/src/lib-storage/index -I/build-src/src/dovecot-2.2.19/src/lib-storage/index/raw -I/build-src/src/dovecot-2.2.19/src/lib-imap-storage -I/build-src/src/dovecot-2.2.19/src/plugins/quota"
+LIBDOVECOT_DSYNC_INCLUDE="-I/build-src/src/dovecot-2.2.19/src/doveadm/dsync"
+LIBDOVECOT_LOGIN_INCLUDE="-I/build-src/src/dovecot-2.2.19/src/login-common"
+LIBDOVECOT_IMAP_INCLUDE="-I/build-src/src/dovecot-2.2.19/src/imap"
+LIBDOVECOT_CONFIG_INCLUDE="-I/build-src/src/dovecot-2.2.19/src/config"
+LIBDOVECOT_IMAPC_INCLUDE="-I/build-src/src/dovecot-2.2.19/src/lib-imap-client -I/build-src/src/dovecot-2.2.19/src/lib-storage/index/imapc"
+LIBDOVECOT_FTS_INCLUDE="-I/build-src/src/dovecot-2.2.19/src/plugins/fts"
+LIBDOVECOT_NOTIFY_INCLUDE="-I/build-src/src/dovecot-2.2.19/src/plugins/notify"
+LIBDOVECOT_PUSH_NOTIFICATION_INCLUDE="-I/build-src/src/dovecot-2.2.19/src/plugins/push-notification"
+LIBDOVECOT_ACL_INCLUDE="-I/build-src/src/dovecot-2.2.19/src/plugins/acl"
+
+dovecot_pkgincludedir=/usr/include/dovecot
+dovecot_pkglibdir=/usr/lib/dovecot
+dovecot_pkglibexecdir=/usr/lib/dovecot
+dovecot_docdir=/usr/share/doc/dovecot
+dovecot_moduledir=/usr/lib/dovecot/modules

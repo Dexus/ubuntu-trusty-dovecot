@@ -1,0 +1,16 @@
+mail-stack-delivery_2.2.19-0c~trusty_all.deb mail optional
+dovecot-core_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-dev_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-imapd_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-pop3d_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-lmtpd_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-managesieved_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-pgsql_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-mysql_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-sqlite_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-ldap_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-gssapi_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-sieve_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-solr_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-lucene_2.2.19-0c~trusty_amd64.deb mail optional
+dovecot-dbg_2.2.19-0c~trusty_amd64.deb debug extra

@@ -1,0 +1,9 @@
+etc/dovecot/private
+usr/sbin
+usr/share/dovecot/protocols.d
+usr/share/doc/dovecot-core
+etc/dovecot/conf.d
+etc/ssl/certs
+etc/ssl/private
+etc/ufw/applications.d
+

@@ -1,0 +1,89 @@
+# HG changeset patch
+# User Timo Sirainen <tss@iki.fi>
+# Date 1404413692 -10800
+# Node ID 5740cb57d02caa4e1388871b2b346d21dc5f45d6
+# Parent  5f21c78cd7b22b50c217b0c5b1d367d800c2f052
+lib: Added o_stream_flush_parent_if_needed() for wrapper ostreams.
+
+# Date 1404413731 -10800
+# Node ID 00b3aa3842b7cf89e430403c35bec4c4c53e66cc
+# Parent  5740cb57d02caa4e1388871b2b346d21dc5f45d6
+lib-compression: Compression ostreams may have caused parent ostream to use too much memory.
+
+diff -r 5f21c78cd7b2 -r 5740cb57d02c src/lib/ostream-private.h
+--- a/src/lib/ostream-private.h	Thu Jul 03 20:42:08 2014 +0300
++++ b/src/lib/ostream-private.h	Thu Jul 03 21:54:52 2014 +0300
+@@ -50,5 +50,9 @@
+ 		     size_t block_size);
+ 
+ void o_stream_copy_error_from_parent(struct ostream_private *_stream);
++/* This should be called before sending data to parent stream. It makes sure
++   that the parent stream's output buffer doesn't become too large.
++   Returns 1 if more data can be safely added, 0 if not, -1 if error. */
++int o_stream_flush_parent_if_needed(struct ostream_private *_stream);
+ 
+ #endif
+diff -r 5f21c78cd7b2 -r 5740cb57d02c src/lib/ostream.c
+--- a/src/lib/ostream.c	Thu Jul 03 20:42:08 2014 +0300
++++ b/src/lib/ostream.c	Thu Jul 03 21:54:52 2014 +0300
+@@ -451,6 +451,23 @@
+ 		o_stream_close(dest);
+ }
+ 
++int o_stream_flush_parent_if_needed(struct ostream_private *_stream)
++{
++	if (o_stream_get_buffer_used_size(_stream->parent) >= IO_BLOCK_SIZE) {
++		/* we already have quite a lot of data in parent stream.
++		   unless we can flush it, don't add any more to it or we
++		   could keep wasting memory by just increasing the buffer
++		   size all the time. */
++		if (o_stream_flush(_stream->parent) < 0) {
++			o_stream_copy_error_from_parent(_stream);
++			return -1;
++		}
++		if (o_stream_get_buffer_used_size(_stream->parent) >= IO_BLOCK_SIZE)
++			return 0;
++	}
++	return 1;
++}
++
+ static int o_stream_default_flush(struct ostream_private *_stream)
+ {
+ 	int ret;
+diff -r 5740cb57d02c -r 00b3aa3842b7 src/lib-compression/ostream-bzlib.c
+--- a/src/lib-compression/ostream-bzlib.c	Thu Jul 03 21:54:52 2014 +0300
++++ b/src/lib-compression/ostream-bzlib.c	Thu Jul 03 21:55:31 2014 +0300
+@@ -113,6 +113,8 @@
+ 	if (zstream->flushed)
+ 		return 0;
+ 
++	if ((ret = o_stream_flush_parent_if_needed(&zstream->ostream)) <= 0)
++		return ret;
+ 	if ((ret = o_stream_zlib_send_outbuf(zstream)) <= 0)
+ 		return ret;
+ 
+diff -r 5740cb57d02c -r 00b3aa3842b7 src/lib-compression/ostream-lzma.c
+--- a/src/lib-compression/ostream-lzma.c	Thu Jul 03 21:54:52 2014 +0300
++++ b/src/lib-compression/ostream-lzma.c	Thu Jul 03 21:55:31 2014 +0300
+@@ -119,6 +119,8 @@
+ 	if (zstream->flushed)
+ 		return 0;
+ 
++	if ((ret = o_stream_flush_parent_if_needed(&zstream->ostream)) <= 0)
++		return ret;
+ 	if ((ret = o_stream_zlib_send_outbuf(zstream)) <= 0)
+ 		return ret;
+ 
+diff -r 5740cb57d02c -r 00b3aa3842b7 src/lib-compression/ostream-zlib.c
+--- a/src/lib-compression/ostream-zlib.c	Thu Jul 03 21:54:52 2014 +0300
++++ b/src/lib-compression/ostream-zlib.c	Thu Jul 03 21:55:31 2014 +0300
+@@ -181,6 +181,9 @@
+ 
+ 	if (zstream->flushed)
+ 		return 0;
++
++	if ((ret = o_stream_flush_parent_if_needed(&zstream->ostream)) <= 0)
++		return ret;
+ 	if (!zstream->header_sent) {
+ 		if (o_stream_zlib_send_gz_header(zstream) < 0)
+ 			return -1;

@@ -1,0 +1,21 @@
+Package: mail-stack-delivery
+Source: dovecot
+Version: 1:2.2.19-0c~trusty
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 90
+Depends: dovecot-core, dovecot-imapd, dovecot-pop3d, dovecot-managesieved, postfix
+Replaces: dovecot-postfix (<< 1:1.2.12-0ubuntu1~)
+Section: mail
+Priority: optional
+Homepage: http://dovecot.org/
+Description: mail server delivery agent stack provided by Ubuntu server team
+ Ubuntu's mail stack provides fully operational delivery with
+ safe defaults and additional options. Out of the box it supports IMAP,
+ POP3 and SMTP services with SASL authentication and Maildir as default
+ storage engine.
+ .
+ This package contains configuration files for dovecot.
+ .
+ This package modifies postfix's configuration to integrate with dovecot
+Original-Maintainer: Dovecot Maintainers <jaldhar-dovecot@debian.org>

@@ -1,0 +1,2 @@
+shlibs:Depends=dovecot-core, dovecot-sieve, libc6 (>= 2.4)
+misc:Depends=

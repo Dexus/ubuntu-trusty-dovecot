@@ -1,0 +1,5 @@
+7f529ba69b34f2154f5e403edfa37879  usr/lib/dovecot/lmtp
+dca3e7a6e01761693b9e9ac1254affe4  usr/share/doc/dovecot-lmtpd/changelog.Debian.gz
+1343ef8c7af409a433f14f357110991a  usr/share/doc/dovecot-lmtpd/changelog.gz
+72f5d634266d31a510c2ee87b700ecda  usr/share/doc/dovecot-lmtpd/copyright
+41e5755bed1e9edbd4bb1ae1e2cfff71  usr/share/dovecot/conf.d/20-lmtp.conf

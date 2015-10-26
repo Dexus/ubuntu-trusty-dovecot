@@ -1,0 +1,76 @@
+#!/bin/sh
+
+set -e
+
+# Prepare to move a conffile without triggering a dpkg question
+prep_mv_conffile() {
+    PKGNAME="$1"
+    CONFFILE="$2"
+    if [ -e "$CONFFILE" ]; then
+        md5sum="`md5sum \"$CONFFILE\" | sed -e \"s/ .*//\"`"
+        old_md5sum="`dpkg-query -W -f='${Conffiles}' $PKGNAME | sed -n -e \"\\\\' $CONFFILE'{s/ obsolete$//;s/.* //p}\"`"
+        if [ "$md5sum" = "$old_md5sum" ]; then
+            rm -f "$CONFFILE"
+        else
+            if [ -e "$CONFFILE" ]; then
+                if [ "$CONFFILE" = "/etc/dovecot/conf.d/01-dovecot-postfix.conf" ]; then
+                    mv -f "$CONFFILE" "/etc/dovecot/conf.d/01-mail-stack-delivery.conf"
+                fi
+                if [ "$CONFFILE" = "/etc/dovecot/auth.d/01-dovecot-postfix.auth" ]; then
+                    mv -f "$CONFFILE" "/etc/dovecot/auth.d/01-mail-stack-delivery.auth"
+                fi
+            fi
+        fi
+    fi
+}
+case "$1" in
+install|upgrade)
+    if dpkg --compare-versions "$2" lt "1:1.2.9-1ubuntu8"; then
+        prep_mv_conffile mail-stack-delivery "/etc/dovecot/conf.d/01-dovecot-postfix.conf"
+        prep_mv_conffile mail-stack-delivery "/etc/dovecot/auth.d/01-dovecot-postfix.auth"
+        if [ -f "/usr/share/dovecot/dovecot-postfix.conf" ]; then
+          mv -f "/usr/share/dovecot/dovecot-postfix.conf"  "/usr/share/dovecot/mail-stack-delivery.conf"
+        fi
+        if [ -f "/etc/dovecot/dovecot-postfix.conf" ]; then
+          mv -f "/etc/dovecot/dovecot-postfix.conf"  "/etc/dovecot/mail-stack-delivery.conf"
+        fi
+        if [ -e "/var/backups/dovecot-postfix/main.cf-backup" ]; then
+            if [ -n "//var/backups/mail-stack-delivery/" ]; then
+                mkdir "/var/backups/mail-stack-delivery/"
+            fi
+            mv -f "/var/backups/dovecot-postfix/main.cf-backup" "/var/backups/mail-stack-delivery/main.cf-backup"
+            test -d /var/backups/dovecot-postfix/ && rmdir --ignore-fail-on-non-empty /var/backups/dovecot-postfix/
+        fi
+    fi
+
+
+	# Check if mail-stack-delivery.conf had any customizations
+	if [ -f "/usr/share/dovecot/mail-stack-delivery.conf" ]; then
+       if [ -f "/etc/dovecot/mail-stack-delivery.conf" ]; then
+               mv /etc/dovecot/mail-stack-delivery.conf /etc/dovecot/mail-stack-delivery.conf.bak
+               DIR=`mktemp -d`
+               egrep -v ^protocol /etc/dovecot/mail-stack-delivery.conf.bak > $DIR/mail-stack-delivery-custom.conf
+               egrep -v ^protocol /usr/share/dovecot/mail-stack-delivery.conf > $DIR/mail-stack-delivery.conf
+               if diff -qur $DIR/mail-stack-delivery-dist.conf $DIR/mail-stack-delivery-custom.conf 1>/dev/null 2>&1; then
+                       rm -f /etc/dovecot/mail-stack-delivery.conf.bak
+               else
+                       awk ' /^auth default/ {flag=1;next} /^}/{flag=0} flag { print }' /etc/dovecot/mail-stack-delivery.conf.bak > /etc/dovecot/auth.d/01-mail-stack-delivery.auth
+                       awk ' /^## Dovecot conf/{flag=1} /^auth default/{flag=0} flag { print }' /etc/dovecot/mail-stack-delivery.conf.bak > /etc/dovecot/conf.d/01-mail-stack-delivery.conf
+                       awk ' /^# If you wish to use another authentication server than dovecot-auth/{flag=1} flag { print }' /etc/dovecot/mail-stack-delivery.conf.bak >> /etc/dovecot/conf.d/01-mail-stack-delivery.conf
+               fi
+               rm -rf $DIR
+       fi
+       
+	fi
+	;;
+	
+    abort-upgrade)
+    ;;
+
+    *)
+    echo "preinst called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+
+

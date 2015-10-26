@@ -1,0 +1,87 @@
+#!/bin/sh
+
+set -e
+
+POSTFIX_BCKFILE="/var/backups/mail-stack-delivery/main.cf-backup"
+
+set_postfix_option() {
+    opt="$1"
+    # Backup the existion value of the option
+    postconf $(echo ${opt} | cut -d= -f1) >> ${POSTFIX_BCKFILE} || true
+    # Set the new value of the option
+    postconf -e "${opt}"
+    echo -n '.'
+}
+
+if [ "$1" = "configure" ]; then
+    # Create initial symlinks for certificates
+    SSL_CERT=$( (grep -m 1 "ssl_cert_file" /etc/dovecot/conf.d/10-ssl.conf || echo '/etc/dovecot/dovecot.pem') | cut -d'=' -f2)
+    SSL_KEY=$( (grep -m 1 "ssl_key_file" /etc/dovecot/conf.d/10-ssl.conf || echo '/etc/dovecot/private/dovecot.pem') | cut -d'=' -f2)
+
+    if [ ! -e "${SSL_KEY}" ]; then
+        ln -s /etc/ssl/private/ssl-cert-snakeoil.key ${SSL_KEY}
+    fi
+    if [ ! -e "${SSL_CERT}" ]; then
+        ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem ${SSL_CERT}
+    fi
+    # Configure postfix either on new install 
+    # or if the postfix backup file is no longer there 
+    # (only deleted when the pkg is removed)
+    if [ -f "/etc/postfix/main.cf" ]; then
+        if [ -e "$POSTFIX_BCKFILE" ]; then
+           cp $POSTFIX_BCKFILE ${POSTFIX_BCKFILE}-$(date +%Y%m%d%H%M)
+        fi
+        if [ -z "$2" -o ! -e "$POSTFIX_BCKFILE" ]; then
+            if which postconf >/dev/null; then
+                # Setup postfix
+                echo 'Mail stack delivery changes some postfix settings.'
+                echo 'Old values are stored in '$POSTFIX_BCKFILE'.'
+                echo 'Feel free to revert any of them when the process is done.'
+                echo -n 'Configuring postfix for mail-stack-delivery integration: '
+                set_postfix_option "home_mailbox = Maildir/"
+                set_postfix_option "smtpd_sasl_auth_enable = yes"
+                set_postfix_option "smtpd_sasl_type = dovecot"
+                set_postfix_option "smtpd_sasl_path = private/dovecot-auth"
+                set_postfix_option "smtpd_sasl_authenticated_header = yes"
+                set_postfix_option "smtpd_sasl_security_options = noanonymous"
+                set_postfix_option "smtpd_sasl_local_domain = \$myhostname"
+                set_postfix_option "broken_sasl_auth_clients = yes"
+                set_postfix_option "smtpd_recipient_restrictions = reject_unknown_sender_domain, reject_unknown_recipient_domain, reject_unauth_pipelining, permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination"
+                set_postfix_option "smtpd_sender_restrictions = reject_unknown_sender_domain"
+                set_postfix_option "mailbox_command = /usr/lib/dovecot/deliver -c /etc/dovecot/dovecot.conf -m \"\${EXTENSION}\""
+                set_postfix_option "smtpd_tls_cert_file = ${SSL_CERT}"
+                set_postfix_option "smtpd_tls_key_file = ${SSL_KEY}"
+                set_postfix_option "smtpd_use_tls = yes"
+                set_postfix_option "smtp_use_tls = yes"
+                set_postfix_option "smtpd_tls_received_header = yes"
+                set_postfix_option "smtpd_tls_mandatory_protocols = SSLv3, TLSv1"
+                set_postfix_option "smtpd_tls_mandatory_ciphers = medium"
+                set_postfix_option "smtpd_tls_auth_only = yes"
+                set_postfix_option "tls_random_source = dev:/dev/urandom"
+                echo ' done.'
+            fi
+        fi
+        # Parameters that need to be changed on upgrades
+        if [ ! -z "$2" ] && dpkg --compare-versions $2 lt 1:2.1.7-7ubuntu1; then
+            set_postfix_option "mailbox_command = /usr/lib/dovecot/deliver -c /etc/dovecot/dovecot.conf -m \"\${EXTENSION}\""
+        fi
+    else
+        echo ""
+        echo "Postfix not configured. Run"
+        echo "sudo dpkg-reconfigure postfix and choose"
+        echo "the type of mail server. Then run"
+        echo "sudo dpkg-reconfigure mail-stack-delivery to"
+        echo "finish mail-stack-delivery installation."
+        echo ""
+    fi
+
+    if [ -x "/etc/init/dovecot" ]; then  
+        service dovecot restart
+    fi
+    if [ -x "/etc/init/postfix" ]; then  
+        service postfix restart
+    fi
+
+fi
+
+

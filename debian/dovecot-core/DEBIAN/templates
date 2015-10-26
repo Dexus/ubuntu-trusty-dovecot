@@ -1,0 +1,185 @@
+
+Template: dovecot-core/ssl-cert-exists
+Type: error
+Description: Wrong location for SSL certificates
+ This machine uses SSL certificates for Dovecot. These certificates
+ should be moved from /etc/ssl to /etc/dovecot and Dovecot's
+ configuration file (/etc/dovecot/conf.d/10-ssl.conf) should be updated
+ accordingly.
+ .
+ Please read /usr/share/doc/dovecot-core/README.Debian.gz for details.
+Description-cs.UTF-8: Špatné umístění SSL certifikátů
+ Tento počítač používá SSL certifikáty pro Dovecot. Tyto certifikáty je třeba přesunout z /etc/ssl do /etc/dovecot a konfigurační soubor pro Dovecot (/etc/dovecot/conf.d/10-ssl.conf) by měl být odpovídajícím způsobem aktualizován.
+ .
+ Pro podrobnější informace si prosím přečtěte /usr/share/doc/dovecot-core/README.Debian.gz.
+Description-da.UTF-8: Forkert placering for SSL-certifikater
+ Denne maskine bruger SSL-certifikater for Dovecot. Disse certifikater skal flyttes fra /etc/ssl til /etc/dovecot og Dovecots konfigurationsfil (/etc/dovecot/conf.d/10-ssl.conf) skal opdateres jævnfør dette.
+ .
+ Læs venligst /usr/share/doc/dovecot-core/README.Debian.gz for detaljer.
+Description-de.UTF-8: Falscher Speicherort für SSL-Zertifikate
+ Dieser Rechner verwendet SSL-Zertifikate für Dovecot. Diese Zertifikate sollten von /etc/ssl nach /etc/dovecot verschoben und die Konfigurationsdatei von Dovecot (/etc/dovecot/conf.d/10-ssl.conf) entsprechend aktualisiert werden.
+ .
+ Bitte lesen Sie /usr/share/doc/dovecot-core/README.Debian.gz, um Einzelheiten zu erfahren.
+Description-es.UTF-8: Ubicación incorrecta de los certificados SSL
+ Este equipo utiliza certificados SSL para Dovecot. Debe mover estos certificados de «/etc/ssl» a «/etc/dovecot» y actualizar el archivo de configuración de Dovecot («/etc/dovecot/conf.d/10-ssl.conf») para reflejar este cambio.
+ .
+ Consulte «/usr/share/doc/dovecot-core/README.Debian.gz» para más detalles.
+Description-fr.UTF-8: Mauvais emplacement pour les certificats SSL
+ Cette machine utilise des certificats SSL pour Dovecot. Ces certificats doivent être déplacés de /etc/ssl vers /etc/dovecot, et le fichier de configuration de Dovecot (/etc/dovecot/conf.d/10-ssl.conf) doit être mis à jour en conséquence.
+ .
+ Veuillez lire le fichier /usr/share/doc/dovecot-core/README.Debian.gz pour les détails.
+Description-it.UTF-8: Posizione non corretta per i certificati SSL
+ Questa macchina usa certificati SSL per Dovecot. Questi certificati dovrebbero essere spostati da /etc/ssl in /etc/dovecot e il file di configurazione di Dovecot (/etc/dovecot/conf.d/10-ssl.conf) dovrebbe essere aggiornato di conseguenza.
+ .
+ Leggere /usr/share/doc/dovecot-core/README.Debian.gz per i dettagli.
+Description-ja.UTF-8: SSL 証明書が良くない位置にあります
+ このマシンでは Dovecot 用の SSL 証明書を利用しています。その証明書を /etc/ssl から /etc/dovecot に移動するとともに Dovecot の設定ファイル (/etc/dovecot/conf.d/10-ssl.conf) の設定をそれに合わせて更新すべきです。
+ .
+ 詳細については /usr/share/doc/dovecot-core/README.Debian.gz を見てください。
+Description-pl.UTF-8: Złe położenie certyfikatów SSL
+ Komputer używa certyfikatów SSL do Dovecot. Powinny być one przeniesione z /etc/ssl do /etc/dovecot, a plik konfiguracyjny Dovecot (/etc/dovecot/conf.d/10-ssl.conf) powinien zostać odpowiednio zaktualizowany.
+ .
+ Proszę zapoznać się z /usr/share/doc/dovecot-core/README.Debian.gz aby poznać więcej szczegółów.
+Description-pt.UTF-8: Localização errada para certificados SSL
+ Esta máquina usa certificados SSL para o Dovecot. Estes certificados devem ser movidos de /etc/ssl para /etc/dovecot e o ficheiro de configuração do Dovecot (/etc/dovecot/conf.d/10-ssl.conf) deve ser actualizado de acordo com a alteração.
+ .
+ Por favor leia /usr/share/doc/dovecot-core/README.Debian.gz para mais detalhes.
+Description-ru.UTF-8: Некорректное расположение сертификатов SSL
+ На данной машине в Dovecot используются сертификаты SSL. Они должны быть перемещены из /etc/ssl в /etc/dovecot и, согласно этому, исправлен файл настройки Dovecot (/etc/dovecot/conf.d/10-ssl.conf).
+ .
+ Подробней об этом смотрите в файле /usr/share/doc/dovecot-core/README.Debian.gz.
+Description-sv.UTF-8: Fel plats för SSL-certifikat
+ Den maskinen använder SSL-cerifikat för Dovecot. Dessa certifikat ska flyttas från /etc/ssl till /etc/dovecot och Dovecots inställningsfil (/etc/dovecot/conf.d/10-ssl.conf) behöver uppdateras för detta.
+ .
+ Läs mer i /usr/share/doc/dovecot-core/README.Debian.gz.
+
+Template: dovecot-core/create-ssl-cert
+Type: boolean
+Default: true
+Description: Create a self-signed SSL certificate?
+ An SSL certificate is needed in order to use IMAP or POP3 over SSL/TLS.
+ No such certificate was found.
+ .
+ Please choose whether you want to create one now. This will then be a
+ self-signed certificate.
+ .
+ If you choose not to create a certificate, please adapt Dovecot's
+ configuration file (/etc/dovecot/conf.d/10-ssl.conf).
+Description-cs.UTF-8: Vytvořit SSL certifikát podepsaný sám sebou?
+ Pokud se má používat IMAP či POP3 přes SSL/TLS, je nutný SSL certifikát. Žádný takový certifikát nebyl nalezen.
+ .
+ Zvolte si prosím, zda chcete vytvořit nový certifikát. Ten bude poté podepsán sám sebou.
+ .
+ Pokud se rozhodnete certifikát nevytvářet, upravte prosím konfigurační soubor pro Dovecot (/etc/dovecot/conf.d/10-ssl.conf).
+Description-da.UTF-8: Opret et egenunderskrevet SSL-certifikat?
+ Et SSL-certifikat er krævet for at bruge IMAP eller POP3 over SSL/TLS. Intet sådant certifikat blev fundet.
+ .
+ Vælg venligst hvorvidt du ønsker at oprette et nu. Det vil være et egenunderskrevet certifikat.
+ .
+ Hvis du vælger ikke at oprette et certifikat, så adopter Dovecots konfigurationsfil (/etc/dovecot/conf.d/10-ssl.conf).
+Description-de.UTF-8: Ein selbstsigniertes SSL-Zertifikat erstellen?
+ Um IMAP oder POP3 über SSL/TLS zu benutzen, wird ein SSL-Zertifikat benötigt. Es wurde kein derartiges Zertifikat gefunden.
+ .
+ Bitte wählen Sie, ob Sie nun eins erstellen möchten. Dies wird dann ein selbstsigniertes Zertifikat sein.
+ .
+ Falls Sie sich entscheiden, kein Zertifikat zu erstellen, passen Sie bitte die Konfigurationsdatei von Dovecot (/etc/dovecot/conf.d/10-ssl.conf) an.
+Description-es.UTF-8: ¿Desea crear un certificado SSL autofirmado?
+ Necesita un certificado SSL para utilizar IMAP o POP3 sobre SSL/TLS. No se ha encontrado ningún certificado.
+ .
+ Elija si desea crear uno ahora. Este será un certificado autofirmado.
+ .
+ Si decide no crear un certificado, modifique el archivo de configuración de Dovecot («/etc/dovecot/conf.d/10-ssl.conf»).
+Description-fr.UTF-8: Faut-il créer un certificat SSL auto-signé ?
+ Un certificat SSL est nécessaire pour utiliser les protocoles IMAP et POP3 avec SSL. Aucun certificat n'a été trouvé.
+ .
+ Veuillez choisir si vous souhaitez en créer un maintenant. Ce sera alors un certificat auto-signé.
+ .
+ Si vous choisissez de ne pas créer de certificat, veuillez modifier le fichier de configuration de Dovecot (/etc/dovecot/conf.d/10-ssl.conf).
+Description-it.UTF-8: Creare un certificato SSL auto-firmato?
+ È necessario un certificato SSL per poter usare IMAP o POP3 via SSL/TLS. Non è stato trovato un certificato di questo tipo.
+ .
+ Scegliere se crearne uno ora. Sarà un certificato auto-firmato.
+ .
+ Se si sceglie di non creare un certificato, adattare il file di configurazione di Dovecot (/etc/dovecot/conf.d/10-ssl.conf).
+Description-ja.UTF-8: 自己署名した SSL 証明書を作成しますか?
+ IMAP や POP3 を SSL/TLS 越しに利用するには証明書が必要ですが、その証明書が見つかりませんでした。
+ .
+ ここで作成するかどうか選択してください。作成する場合は自己署名した証明書を作成します。
+ .
+ ここで作成しない場合は Dovecot の設定ファイル (/etc/dovecot/conf.d/10-ssl.conf) をそれに合わせて変更してください。
+Description-pl.UTF-8: Utworzyć podpisany przez siebie samego certyfikat SSL?
+ Certyfikat SSL jest wymagany w celu używania IMAP lub POP3 przez SSL/TLS. Nie znaleziono takiego certyfikatu.
+ .
+ Proszę wybrać, czy powinien zostać utworzony teraz. Będzie to certyfikat podpisany przez siebie samego.
+ .
+ Jeśli nie utworzy się go w tej chwili, trzeba będzie odpowiednio dopasować plik konfiguracyjny Dovecot (/etc/dovecot/conf.d/10-ssl.conf).
+Description-pt.UTF-8: Criar um certificado SSL auto-assinado?
+ É necessário um certificado SSL de modo a usar IMAP ou POP3 por SSL/TLS. Nenhum certificado foi encontrado.
+ .
+ Por favor escolha se deseja criar um agora. Este será um certificado auto-assinado.
+ .
+ Se escolher não criar um certificado, por favor adapte o ficheiro de configuração do Dovecot (/etc/dovecot/conf.d/10-ssl.conf).
+Description-ru.UTF-8: Создать самоподписанный сертификат SSL?
+ Для работы IMAP или POP3 через SSL/TLS требуется сертификат SSL. Подходящий сертификат не обнаружен.
+ .
+ Укажите, нужно ли создать такой прямо сейчас. Это будет самоподписанный сертификат.
+ .
+ Если вы откажитесь от создания сертификата, то исправьте файл настройки Dovecot (/etc/dovecot/conf.d/10-ssl.conf).
+Description-sv.UTF-8: Skapa ett självsignerat SSL-certifikat?
+ Ett SSL-certifikat behövs för att kunna använda IMAP eller POP3 över SSL/TLS. Inget sådant certifikat kunde hittas.
+ .
+ Ange om du vill skapat ett sådant nu. Detta kommer att vara ett självsignerat certifikat.
+ .
+ Väljer du att inte skapa ett certifkat behövs justeringar i Dovecots inställningsfil (/etc/dovecot/conf.d/10-ssl.conf).
+
+Template: dovecot-core/ssl-cert-name
+Type: string
+Default: localhost
+Description: Host name:
+ Please enter the host name to use in the SSL certificate.
+ .
+ It will become the "commonName" field of the generated SSL certificate.
+Description-cs.UTF-8: Název hostitele:
+ Zadejte prosím název hostitele, který se použije v SSL certifikátu.
+ .
+ Ten se stane políčkem "commonName" vytvořeného certifikátu.
+Description-da.UTF-8: Værtsnavn:
+ Indtast venligst værtsnavnet der skal bruges i SSL-certifikatet.
+ .
+ Det vil blive »commonName«-feltet for det oprettede SSL-certifikat.
+Description-de.UTF-8: Rechnername:
+ Bitte geben Sie den Rechnernamen ein, der im SSL-Zertifikat benutzt werden soll.
+ .
+ Er wird das Feld »commonName« des erzeugten SSL-Zertifikats werden.
+Description-es.UTF-8: Nombre del equipo:
+ Introduzca el nombre del equipo para utilizar en el certificado SSL.
+ .
+ Este será el campo «commonName» del certificado SSL generado.
+Description-fr.UTF-8: Nom d'hôte :
+ Veuillez indiquer le nom d'hôte à utiliser dans le certificat SSL.
+ .
+ Il constituera le champ « commonName » du certificat SSL créé.
+Description-it.UTF-8: Nome host:
+ Inserire il nome host da usare nel certificato SSL.
+ .
+ Diventerà il campo «commonName» del certificato SSL generato.
+Description-ja.UTF-8: ホスト名:
+ SSL 証明書で利用するホスト名を入力してください。
+ .
+ これは生成した SSL 証明書の「一般名 (CN)」として利用されます。
+Description-pl.UTF-8: Nazwa hosta:
+ Proszę podać nazwę hosta, która ma zostać użyta w certyfikacie SSL.
+ .
+ Pojawi się ona w polu "commonName" wygenerowanego certyfikatu SSL.
+Description-pt.UTF-8: Nome de máquina:
+ Por favor indique o nome de máquina a usar no certificado SSL.
+ .
+ Irá ser o campo "commonName" do certificado SSL gerado.
+Description-ru.UTF-8: Имя узла:
+ Введите имя машины, которое будет использовано в сертификате SSL.
+ .
+ Оно будет указано в поле «commonName» сгенерированного сертификата SSL.
+Description-sv.UTF-8: Värdnamn:
+ Ange värdnamnet som ska anvöndas i SSL-certifikatet.
+ .
+ Detta kommer att hamna i SSL-certifikatets "commonName"-fält.

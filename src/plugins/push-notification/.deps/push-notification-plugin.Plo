@@ -1,0 +1,324 @@
+push-notification-plugin.lo: push-notification-plugin.c \
+ /usr/include/stdc-predef.h ../../../src/lib/lib.h ../../../config.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h /usr/include/stdlib.h \
+ /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+ /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+ /usr/include/x86_64-linux-gnu/bits/types.h \
+ /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
+ /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/time.h \
+ /usr/include/x86_64-linux-gnu/sys/select.h \
+ /usr/include/x86_64-linux-gnu/bits/select.h \
+ /usr/include/x86_64-linux-gnu/bits/sigset.h \
+ /usr/include/x86_64-linux-gnu/bits/time.h \
+ /usr/include/x86_64-linux-gnu/bits/select2.h \
+ /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
+ /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h \
+ /usr/include/xlocale.h /usr/include/x86_64-linux-gnu/bits/string.h \
+ /usr/include/x86_64-linux-gnu/bits/string2.h \
+ /usr/include/x86_64-linux-gnu/bits/string3.h /usr/include/strings.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h /usr/include/errno.h \
+ /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/x86_64-linux-gnu/asm/errno.h \
+ /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h ../../../src/lib/compat.h \
+ /usr/include/x86_64-linux-gnu/sys/uio.h \
+ /usr/include/x86_64-linux-gnu/bits/uio.h ../../../src/lib/macros.h \
+ ../../../src/lib/failures.h ../../../src/lib/data-stack.h \
+ ../../../src/lib/mempool.h ../../../src/lib/imem.h \
+ ../../../src/lib/rand.h ../../../src/lib/array-decl.h \
+ ../../../src/lib/bits.h ../../../src/lib/hash-decl.h \
+ ../../../src/lib/strfuncs.h ../../../src/lib/sort.h \
+ ../../../src/lib/strnum.h ../../../src/lib/array.h \
+ ../../../src/lib/buffer.h ../../../src/lib-storage/mail-namespace.h \
+ ../../../src/lib-storage/mail-user.h ../../../src/lib/unichar.h \
+ ../../../src/lib-storage/mail-storage-settings.h \
+ ../../../src/lib/file-lock.h /usr/include/unistd.h \
+ /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/fcntl.h \
+ /usr/include/x86_64-linux-gnu/bits/fcntl.h \
+ /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
+ /usr/include/x86_64-linux-gnu/bits/stat.h \
+ /usr/include/x86_64-linux-gnu/bits/fcntl2.h \
+ ../../../src/lib/fsync-mode.h ../../../src/lib-storage/mail-storage.h \
+ ../../../src/lib/seq-range-array.h ../../../src/lib/guid.h \
+ ../../../src/lib-mail/mail-types.h ../../../src/lib-storage/mail-error.h \
+ ../../../src/lib-storage/mail-namespace.h \
+ ../../../src/lib-storage/mailbox-list.h \
+ ../../../src/lib-storage/mailbox-attribute.h \
+ ../../../src/lib-storage/mail-storage-private.h \
+ ../../../src/lib/module-context.h ../../../src/lib/array.h \
+ ../../../src/lib-storage/mail-storage.h \
+ ../../../src/lib-storage/mail-storage-hooks.h \
+ ../../../src/lib-storage/mailbox-attribute-private.h \
+ ../../../src/lib-index/mail-index-private.h \
+ ../../../src/lib-index/mail-index.h \
+ ../../../src/lib-index/mail-index-util.h \
+ ../../../src/lib-index/mail-index-view-private.h \
+ ../../../src/lib-index/mail-index-private.h \
+ ../../../src/lib-index/mail-index-transaction-private.h \
+ ../../../src/lib-index/mail-transaction-log.h \
+ /usr/include/x86_64-linux-gnu/sys/stat.h \
+ ../../../src/plugins/notify/notify-plugin.h ../../../src/lib/str.h \
+ push-notification-drivers.h ../../../src/lib-storage/mail-user.h \
+ push-notification-triggers.h push-notification-events.h \
+ push-notification-events-rfc5423.h push-notification-plugin.h \
+ push-notification-txn-mbox.h push-notification-txn-msg.h
+
+/usr/include/stdc-predef.h:
+
+../../../src/lib/lib.h:
+
+../../../config.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/features.h:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/time.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigset.h:
+
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
+/usr/include/x86_64-linux-gnu/sys/sysmacros.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
+/usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
+
+/usr/include/string.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/x86_64-linux-gnu/bits/string.h:
+
+/usr/include/x86_64-linux-gnu/bits/string2.h:
+
+/usr/include/x86_64-linux-gnu/bits/string3.h:
+
+/usr/include/strings.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdarg.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/limits.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/syslimits.h:
+
+/usr/include/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/errno.h:
+
+/usr/include/linux/errno.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/asm-generic/errno.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+../../../src/lib/compat.h:
+
+/usr/include/x86_64-linux-gnu/sys/uio.h:
+
+/usr/include/x86_64-linux-gnu/bits/uio.h:
+
+../../../src/lib/macros.h:
+
+../../../src/lib/failures.h:
+
+../../../src/lib/data-stack.h:
+
+../../../src/lib/mempool.h:
+
+../../../src/lib/imem.h:
+
+../../../src/lib/rand.h:
+
+../../../src/lib/array-decl.h:
+
+../../../src/lib/bits.h:
+
+../../../src/lib/hash-decl.h:
+
+../../../src/lib/strfuncs.h:
+
+../../../src/lib/sort.h:
+
+../../../src/lib/strnum.h:
+
+../../../src/lib/array.h:
+
+../../../src/lib/buffer.h:
+
+../../../src/lib-storage/mail-namespace.h:
+
+../../../src/lib-storage/mail-user.h:
+
+../../../src/lib/unichar.h:
+
+../../../src/lib-storage/mail-storage-settings.h:
+
+../../../src/lib/file-lock.h:
+
+/usr/include/unistd.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/getopt.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd.h:
+
+/usr/include/fcntl.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
+
+/usr/include/x86_64-linux-gnu/bits/stat.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl2.h:
+
+../../../src/lib/fsync-mode.h:
+
+../../../src/lib-storage/mail-storage.h:
+
+../../../src/lib/seq-range-array.h:
+
+../../../src/lib/guid.h:
+
+../../../src/lib-mail/mail-types.h:
+
+../../../src/lib-storage/mail-error.h:
+
+../../../src/lib-storage/mail-namespace.h:
+
+../../../src/lib-storage/mailbox-list.h:
+
+../../../src/lib-storage/mailbox-attribute.h:
+
+../../../src/lib-storage/mail-storage-private.h:
+
+../../../src/lib/module-context.h:
+
+../../../src/lib/array.h:
+
+../../../src/lib-storage/mail-storage.h:
+
+../../../src/lib-storage/mail-storage-hooks.h:
+
+../../../src/lib-storage/mailbox-attribute-private.h:
+
+../../../src/lib-index/mail-index-private.h:
+
+../../../src/lib-index/mail-index.h:
+
+../../../src/lib-index/mail-index-util.h:
+
+../../../src/lib-index/mail-index-view-private.h:
+
+../../../src/lib-index/mail-index-private.h:
+
+../../../src/lib-index/mail-index-transaction-private.h:
+
+../../../src/lib-index/mail-transaction-log.h:
+
+/usr/include/x86_64-linux-gnu/sys/stat.h:
+
+../../../src/plugins/notify/notify-plugin.h:
+
+../../../src/lib/str.h:
+
+push-notification-drivers.h:
+
+../../../src/lib-storage/mail-user.h:
+
+push-notification-triggers.h:
+
+push-notification-events.h:
+
+push-notification-events-rfc5423.h:
+
+push-notification-plugin.h:
+
+push-notification-txn-mbox.h:
+
+push-notification-txn-msg.h:

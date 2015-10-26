@@ -1,0 +1,2 @@
+misc:Depends=debconf (>= 0.5) | debconf-2.0, sysv-rc (>= 2.88dsf-24) | file-rc (>= 0.8.16)
+shlibs:Depends=dovecot-core, libbz2-1.0, libc6 (>= 2.17), libexttextcat-2.0-0 (>= 3.3.0), libicu52 (>= 52~m1-1~), liblzma5 (>= 5.1.1alpha+20120614), libpam0g (>= 0.99.7.1), libssl1.0.0 (>= 1.0.0), libstemmer0d (>= 0+svn527), libwrap0 (>= 7.6-4~), zlib1g (>= 1:1.1.4)

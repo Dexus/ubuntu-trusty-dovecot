@@ -1,0 +1,2 @@
+shlibs:Depends=libc6 (>= 2.4), libclucene-core1 (>= 2.3.3.4), libexttextcat-2.0-0 (>= 2.2-8), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.1.1), libstemmer0d (>= 0+svn527)
+misc:Depends=

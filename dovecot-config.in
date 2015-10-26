@@ -1,0 +1,41 @@
+DOVECOT_CFLAGS="-std=gnu99 -g -O2 -fPIE -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -W -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith -Wchar-subscripts -Wformat=2 -Wbad-function-cast -fno-builtin-strftime -Wstrict-aliasing=2   "
+DOVECOT_LIBS=""
+DOVECOT_SSL_LIBS="-lssl -lcrypto  "
+DOVECOT_SQL_LIBS=""
+DOVECOT_COMPRESS_LIBS=" -lz -lbz2 -llzma"
+
+LIBDOVECOT="$(top_builddir)/src/lib-dovecot/libdovecot.la $(MODULE_LIBS)"
+LIBDOVECOT_LOGIN="$(top_builddir)/src/login-common/libdovecot-login.la -lssl -lcrypto  "
+LIBDOVECOT_SQL="$(top_builddir)/src/lib-sql/libsql.la"
+LIBDOVECOT_COMPRESS="$(top_builddir)/src/lib-compression/libcompression.la"
+LIBDOVECOT_LDA="$(top_builddir)/src/lib-lda/libdovecot-lda.la"
+LIBDOVECOT_STORAGE="$(top_builddir)/src/lib-storage/libdovecot-storage.la $(top_builddir)/src/lib-imap-storage/libimap-storage.la"
+LIBDOVECOT_DSYNC="$(top_builddir)/src/doveadm/dsync/libdovecot-dsync.la"
+
+LIBDOVECOT_DEPS="$(top_builddir)/src/lib-dovecot/libdovecot.la"
+LIBDOVECOT_LOGIN_DEPS="$(top_builddir)/src/login-common/libdovecot-login.la"
+LIBDOVECOT_SQL_DEPS="$(top_builddir)/src/lib-sql/libsql.la"
+LIBDOVECOT_COMPRESS_DEPS="$(top_builddir)/src/lib-compression/libcompression.la"
+LIBDOVECOT_LDA_DEPS="$(top_builddir)/src/lib-lda/libdovecot-lda.la"
+LIBDOVECOT_STORAGE_DEPS="$(top_builddir)/src/lib-storage/libdovecot-storage.la $(top_builddir)/src/lib-imap-storage/libimap-storage.la"
+LIBDOVECOT_DSYNC_DEPS="$(top_builddir)/src/doveadm/dsync/libdovecot-dsync.la"
+
+LIBDOVECOT_INCLUDE="-I$(incdir) -I$(incdir)/src/lib -I$(incdir)/src/lib-dict -I$(incdir)/src/lib-dns -I$(incdir)/src/lib-http -I$(incdir)/src/lib-mail -I$(incdir)/src/lib-imap -I$(incdir)/src/lib-fs -I$(incdir)/src/lib-charset -I$(incdir)/src/lib-auth -I$(incdir)/src/lib-master -I$(incdir)/src/lib-ssl-iostream -I$(incdir)/src/lib-compression -I$(incdir)/src/lib-settings -I$(incdir)/src/lib-test -I$(incdir)/src/lib-sasl -I$(incdir)/src/lib-stats"
+LIBDOVECOT_LDA_INCLUDE="-I$(incdir)/src/lib-lda -I$(incdir)/src/lda"
+LIBDOVECOT_DOVEADM_INCLUDE="-I$(incdir)/src/doveadm"
+LIBDOVECOT_STORAGE_INCLUDE="-I$(incdir)/src/lib-index -I$(incdir)/src/lib-storage -I$(incdir)/src/lib-storage/list -I$(incdir)/src/lib-storage/index -I$(incdir)/src/lib-storage/index/raw -I$(incdir)/src/lib-imap-storage -I$(incdir)/src/plugins/quota"
+LIBDOVECOT_DSYNC_INCLUDE="-I$(incdir)/src/doveadm/dsync"
+LIBDOVECOT_LOGIN_INCLUDE="-I$(incdir)/src/login-common"
+LIBDOVECOT_IMAP_INCLUDE="-I$(incdir)/src/imap"
+LIBDOVECOT_CONFIG_INCLUDE="-I$(incdir)/src/config"
+LIBDOVECOT_IMAPC_INCLUDE="-I$(incdir)/src/lib-imap-client -I$(incdir)/src/lib-storage/index/imapc"
+LIBDOVECOT_FTS_INCLUDE="-I$(incdir)/src/plugins/fts"
+LIBDOVECOT_NOTIFY_INCLUDE="-I$(incdir)/src/plugins/notify"
+LIBDOVECOT_PUSH_NOTIFICATION_INCLUDE="-I$(incdir)/src/plugins/push-notification"
+LIBDOVECOT_ACL_INCLUDE="-I$(incdir)/src/plugins/acl"
+
+dovecot_pkgincludedir=
+dovecot_pkglibdir=
+dovecot_pkglibexecdir=
+dovecot_docdir=
+dovecot_moduledir=

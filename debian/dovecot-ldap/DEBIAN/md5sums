@@ -1,0 +1,7 @@
+373680809186c3d4cd7636c24c9e8088  usr/lib/dovecot/modules/auth/libauthdb_ldap.so
+dca3e7a6e01761693b9e9ac1254affe4  usr/share/doc/dovecot-ldap/changelog.Debian.gz
+1343ef8c7af409a433f14f357110991a  usr/share/doc/dovecot-ldap/changelog.gz
+72f5d634266d31a510c2ee87b700ecda  usr/share/doc/dovecot-ldap/copyright
+a2744fcb39b1f6006d0701346bc0be35  usr/share/dovecot/conf.d/auth-ldap.conf.ext
+0128702cd9d9525f2854a4a8220ccb1a  usr/share/dovecot/dovecot-ldap.conf.ext
+0225ce3d21bb89c18117627e00ec8a68  usr/share/lintian/overrides/dovecot-ldap

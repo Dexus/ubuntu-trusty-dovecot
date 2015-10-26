@@ -1,0 +1,2 @@
+shlibs:Depends=dovecot-core, libbz2-1.0, libc6 (>= 2.14), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.1.4)
+misc:Depends=

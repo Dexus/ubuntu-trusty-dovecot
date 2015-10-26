@@ -1,0 +1,5 @@
+d1e20dfa379e606a8483bb81bc9d389f  usr/lib/dovecot/modules/lib21_fts_lucene_plugin.so
+dca3e7a6e01761693b9e9ac1254affe4  usr/share/doc/dovecot-lucene/changelog.Debian.gz
+1343ef8c7af409a433f14f357110991a  usr/share/doc/dovecot-lucene/changelog.gz
+72f5d634266d31a510c2ee87b700ecda  usr/share/doc/dovecot-lucene/copyright
+16b96f570d61f4908fb49c3f8bef86d6  usr/share/lintian/overrides/dovecot-lucene

@@ -1,0 +1,22 @@
+Package: dovecot-dev
+Source: dovecot
+Version: 1:2.2.19-0c~trusty
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1962
+Depends: dovecot-core (= 1:2.2.19-0c~trusty)
+Breaks: dovecot-common (<< 1:2.0.14-2~)
+Replaces: dovecot-common (<< 1:2.0.14-2~)
+Section: mail
+Priority: optional
+Homepage: http://dovecot.org/
+Description: secure POP3/IMAP server - header files
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package contains header files needed to compile plugins for the Dovecot
+ mail server.
+Original-Maintainer: Dovecot Maintainers <jaldhar-dovecot@debian.org>

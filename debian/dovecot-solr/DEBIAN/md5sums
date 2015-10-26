@@ -1,0 +1,7 @@
+2ff90fa62982b722bed0ca530c0a6b73  usr/lib/dovecot/modules/lib21_fts_solr_plugin.so
+e10546dccf71502ded68bafbaf7b0a86  usr/share/doc/dovecot-solr/README.Debian
+dca3e7a6e01761693b9e9ac1254affe4  usr/share/doc/dovecot-solr/changelog.Debian.gz
+1343ef8c7af409a433f14f357110991a  usr/share/doc/dovecot-solr/changelog.gz
+72f5d634266d31a510c2ee87b700ecda  usr/share/doc/dovecot-solr/copyright
+df1dbc39570b09e030dfd47d6c72b8f2  usr/share/dovecot/solr-schema.xml
+7e1dbc4113e988c5d56cefa59d89e679  usr/share/lintian/overrides/dovecot-solr

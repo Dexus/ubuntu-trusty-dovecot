@@ -1,0 +1,4 @@
+/etc/dovecot/README
+/etc/init/dovecot.conf
+/etc/pam.d/dovecot
+/etc/ufw/applications.d/dovecot-core

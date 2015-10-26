@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+
+POSTFIX_BCKFILE="/var/backups/mail-stack-delivery/main.cf-backup"
+
+PATH=/usr/sbin:$PATH
+export PATH
+
+if [ "$1" = "remove" -o "$1" = "purge" ]; then
+	# Restore postfix configuration
+	if [ "$1" = "remove" ]; then
+		if which postconf >/dev/null && [ -f "${POSTFIX_BCKFILE}" ]; then
+			while read line; do
+				postconf -e "$line"
+			done < "${POSTFIX_BCKFILE}"
+			rm -f "${POSTFIX_BCKFILE}"
+		fi
+	fi
+    if [ -x "/etc/init/dovecot" ]; then  
+        service dovecot restart    
+    fi
+    if [ -x "/etc/init/dovecot" ]; then  
+        service dovecot restart    
+    fi
+fi
+
+

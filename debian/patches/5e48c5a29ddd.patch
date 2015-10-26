@@ -1,0 +1,20 @@
+
+# HG changeset patch
+# User Timo Sirainen <tss@iki.fi>
+# Date 1444761633 -10800
+# Node ID 5e48c5a29ddd4fb1bfb12359cb149cfaf221bd0d
+# Parent  727acba74cbf0152a40ec54f2ff6437c44b8ddaa
+imap: APPEND crashed if invalid keyword was given as parameter.
+
+diff -r 727acba74cbf -r 5e48c5a29ddd src/imap/cmd-append.c
+--- a/src/imap/cmd-append.c	Tue Oct 13 21:21:48 2015 +0300
++++ b/src/imap/cmd-append.c	Tue Oct 13 21:40:33 2015 +0300
+@@ -534,6 +534,7 @@
+ 			/* invalid keywords - delay failure */
+ 			client_send_box_error(cmd, ctx->box);
+ 			ctx->failed = TRUE;
++			keywords = NULL;
+ 		}
+ 	}
+ 
+

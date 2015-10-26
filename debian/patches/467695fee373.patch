@@ -1,0 +1,38 @@
+
+# HG changeset patch
+# User Timo Sirainen <tss@iki.fi>
+# Date 1445335944 -10800
+# Node ID 467695fee3739e1f336b4299bba90cf4a288e3ed
+# Parent  0f5e58361c48aa5c6298aed7e16dfa1ff440d31c
+dict-sql: Fixed async iteration with MySQL and SQLite
+
+--- a/src/lib-dict/dict-sql.c
++++ b/src/lib-dict/dict-sql.c
+@@ -45,6 +45,7 @@
+ 	const struct dict_sql_map *map;
+ 	unsigned int key_prefix_len, pattern_prefix_len, next_map_idx;
+ 	unsigned int path_idx, sql_fields_start_idx;
++	bool synchronous_result;
+ 	bool failed;
+ };
+ 
+@@ -589,7 +590,7 @@
+ {
+ 	sql_result_ref(result);
+ 	ctx->result = result;
+-	if (ctx->ctx.async_callback != NULL)
++	if (ctx->ctx.async_callback != NULL && !ctx->synchronous_result)
+ 		ctx->ctx.async_callback(ctx->ctx.async_context);
+ }
+ 
+@@ -611,8 +612,10 @@
+ 			ctx->result = sql_query_s(dict->db, str_c(query));
+ 		} else {
+ 			i_assert(ctx->result == NULL);
++			ctx->synchronous_result = TRUE;
+ 			sql_query(dict->db, str_c(query),
+ 				  sql_dict_iterate_callback, ctx);
++			ctx->synchronous_result = FALSE;
+ 		}
+ 	} T_END;
+ 	*error_r = t_strdup(error);
